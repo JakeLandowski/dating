@@ -21,10 +21,10 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 2rem;
+            overflow-x: hidden;
         }
             
-        #pic
+        #dating-home-pic
         {
             width: 100%;
             height: 100%;
@@ -32,7 +32,7 @@
             background-size: cover; 
         }
 
-        .quotes
+        .dating-quotes
         {
             border-top: 1px solid rgba(100, 100, 100, 0.15);
             border-bottom: 1px solid rgba(100, 100, 100, 0.15);
@@ -50,19 +50,44 @@
             width: 13rem;
             height: 3.5rem;
             border-radius: 0.5rem;
+            background-color: #3B79B0;
+        }
+
+        .dating-navbar
+        {
+            background-color: #F8F8F8;
+        }
+
+        .dating-soft-border
+        {
+            border: 1px solid rgba(100, 100, 100, 0.15);
+            border-radius: 0.5rem;
+        }
+
+        .dating-content
+        {
+            font-size: 1.2rem;
+            overflow-y: auto;
         }
 
     </style>
 
-    <div class="container-fluid h-100 p-0">
-        <div class="row h-100 p-0">
-            <div class="col-6 p-4">
+<!-- NAVBAR -->
+    <div class="dating-navbar container-fluid p-2">
+        My Dating Website
+    </div>
+<!-- END NAVBAR -->
+
+<!-- CONTENT -->
+    <div class="container-fluid h-100 p-5">
+        <div class="row h-100 p-5 dating-soft-border">
+            <div class="col-6 p-4 px-5 dating-content">
                 
                 <div class="container-fluid h-100">
                 
                 <!-- INTRO -->
                     <div class="row mb-3">
-                        <h1 class="mx-auto bold">
+                        <h1 class="mx-auto bold text-center">
                             My Dating Website
                         </h1>
                         <p class="mx-auto">
@@ -78,10 +103,10 @@
                 
                 <!-- QUOTES -->
                     <div class="row mb-3">
-                        <h4 class="mx-auto bold">
+                        <h4 class="mx-auto bold text-center">
                             Hear what our users are saying about us.    
                         </h4>
-                        <div class="quotes container-fluid p-2 pt-3">
+                        <div class="dating-quotes container-fluid p-2 px-5 pt-3">
                             <blockquote class="mx-auto">
                                 "I met the love of my life after only 
                                 a month!"
@@ -116,11 +141,12 @@
             </div>
             <div class="col-6 h-100">
                 
-                <div id="pic" class="rounded"></div>
+                <div id="dating-home-pic" class="rounded"></div>
             
             </div>
         </div>
     </div>
+<!-- END CONTENT -->
 
 </body>
 </html>
