@@ -1,0 +1,56 @@
+body
+{
+    font-family: Ubuntu, sans-serif;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+}
+    
+#dating-home-pic
+{
+    width: 100%;
+    height: 100%;
+    background: black url("../images/dating-home-pic.jpeg") center no-repeat;
+    background-size: cover; 
+}
+
+.dating-quotes
+{
+    border-top: 1px solid rgba(100, 100, 100, 0.15);
+    border-bottom: 1px solid rgba(100, 100, 100, 0.15);
+    font-style: italic;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.create-btn
+{
+    font-size: 1.4rem;
+    width: 13rem;
+    height: 3.5rem;
+    border-radius: 0.5rem;
+    background-color: #3B79B0;
+}
+
+.dating-navbar
+{
+    background-color: #F8F8F8;
+}
+
+.dating-soft-border
+{
+    border: 1px solid rgba(100, 100, 100, 0.15);
+    border-radius: 0.5rem;
+}
+
+.dating-content
+{
+    font-size: 1.2rem;
+    overflow-y: auto;
+}
