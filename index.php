@@ -16,9 +16,7 @@ $f3->set('DEBUG', 3);
 
 $f3->route('GET /', function()
 {
-    $template = new Template();
-
-    echo $template->render('pages/home.html');
+    echo Template::instance()->render('views/home.html');
 });
 
 $f3->run();

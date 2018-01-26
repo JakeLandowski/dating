@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@title</title>
+</head>
+
+<style>
+    body
+{
+    font-family: Ubuntu, sans-serif;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.create-btn
+{
+    font-size: 1.4rem;
+    width: 13rem;
+    height: 3.5rem;
+    border-radius: 0.5rem;
+    background-color: #3B79B0;
+}
+
+.dating-navbar
+{
+    background-color: #F8F8F8;
+}
+
+.dating-soft-border
+{
+    border: 1px solid rgba(100, 100, 100, 0.15);
+    border-radius: 0.5rem;
+}
+
+.dating-content
+{
+    font-size: 1.2rem;
+    overflow-y: auto;
+}   
+</style>
+
+
+<body>
+<!-- NAVBAR -->
+    <include href="views/includes/navbar.html" />
+<!-- END NAVBAR -->
+
+    <!-- CONTENT -->
+    <div class="container-fluid h-100 p-5">
+        <div class="row h-100 p-5 dating-soft-border">
+            <div class="col-6 p-4 px-5 dating-content">
+                
+                <div class="container-fluid h-100">
+                
+                <!-- INTRO -->
+                    <div class="row mb-3">
+                        <h1 class="mx-auto bold text-center">
+                            My Dating Website
+                        </h1>
+                        <p class="mx-auto">
+                            Welcome to the web's most successful dating
+                            website. At <span class="bold">My Dating Website</span>
+                            you'll meet other like-minded individuals. We have
+                            the highest success rate of couples on the web. User's 
+                            are matched by interest and location. Find out why so 
+                            many others have found love on our site!
+                        </p>
+                    </div>
+                <!-- END INTRO -->
+
+                <!-- BUTTON -->
+                    <div class="row">
+                        <button class="btn btn-primary mx-auto create-btn">
+                            Next
+                        </button>
+                    </div>
+                <!-- END BUTTON -->
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+<!-- END CONTENT -->
+</body>
+</html>
