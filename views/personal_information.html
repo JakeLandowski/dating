@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@title</title>
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
 </head>
 
 <style>
-    body
+body
 {
     font-family: Ubuntu, sans-serif;
     position: absolute;
@@ -24,11 +25,12 @@
     font-weight: bold;
 }
 
-.create-btn
+.next-btn
 {
-    font-size: 1.4rem;
-    width: 13rem;
-    height: 3.5rem;
+    font-size: 1.1rem;
+    color: white;
+    width: 5rem;
+    height: 2.5rem;
     border-radius: 0.5rem;
     background-color: #3B79B0;
 }
@@ -52,47 +54,84 @@
 </style>
 
 
-<body>
+<body class="p-5">
 <!-- NAVBAR -->
     <include href="views/includes/navbar.html" />
-<!-- END NAVBAR -->
 
-    <!-- CONTENT -->
-    <div class="container-fluid h-100 p-5">
-        <div class="row h-100 p-5 dating-soft-border">
-            <div class="col-6 p-4 px-5 dating-content">
-                
-                <div class="container-fluid h-100">
-                
-                <!-- INTRO -->
-                    <div class="row mb-3">
-                        <h1 class="mx-auto bold text-center">
-                            My Dating Website
-                        </h1>
-                        <p class="mx-auto">
-                            Welcome to the web's most successful dating
-                            website. At <span class="bold">My Dating Website</span>
-                            you'll meet other like-minded individuals. We have
-                            the highest success rate of couples on the web. User's 
-                            are matched by interest and location. Find out why so 
-                            many others have found love on our site!
-                        </p>
-                    </div>
-                <!-- END INTRO -->
+<!-- FORM -->
+    <form class="container-fluid h-100 p-5 dating-content dating-soft-border">
 
-                <!-- BUTTON -->
-                    <div class="row">
-                        <button class="btn btn-primary mx-auto create-btn">
-                            Next
-                        </button>
-                    </div>
-                <!-- END BUTTON -->
+        <h1>Personal Information</h1>
+        <hr />
 
+        <div class="row">
+            <div class="col-md-9">
+                <div class="container-fluid p-0">
+                    
+                    <!-- FIRST NAME -->
+                        <div class="row">
+                                <div class="form-group w-100">
+                                    <label class="bold">First Name</label>
+                                    <input name="first_name" type="text" class="form-control" />
+                                </div>
+                            </div>
+                        
+                        <!-- LAST NAME -->
+                            <div class="row">
+                                <div class="form-group w-100">
+                                    <label class="bold">Last Name</label>
+                                    <input name="last_name" type="text" class="form-control" />
+                                </div>
+                            </div>
+                    
+                        <!-- AGE -->
+                            <div class="row">
+                                <div class="form-group w-100">
+                                    <label class="bold">Age</label>
+                                    <input name="age" type="text" class="form-control" />
+                                </div>
+                            </div>
+                    
+                        <!-- GENDER -->
+                            <div class="row">
+                                <div class="form-group w-100">
+                                    <label class="bold">Gender</label><br />
+                    
+                                    <div class="form-check form-check-inline mr-4">
+                                        <input name="gender" type="radio" value="male" class="form-check-input" />
+                                        <label class="form-check-label">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="gender" type="radio" value="female" class="form-check-input" />
+                                        <label class="form-check-label">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                        <!-- FIRST NAME -->
+                            <div class="row">
+                                <div class="form-group w-100">
+                                    <label class="bold">Phone Number</label>
+                                    <input name="phone_number" type="text" class="form-control" />
+                                </div>
+                            </div>
                 </div>
-                
+            </div>
+
+            <div class="col-md-3">
+                <div class="container-fluid p-0">
+                    box thing on the right
+                </div>
             </div>
         </div>
-    </div>
-<!-- END CONTENT -->
+
+    <!-- BUTTON -->
+        <div class="row bg-warning justify-content-end">
+            <button class="btn next-btn">
+                Next&nbsp;&nbsp;&gt;
+            </button>
+        </div>
+
+    </form>
 </body>
 </html>
