@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@title</title>
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+</head>
+
+<style>
+body
+{
+    font-family: Ubuntu, sans-serif;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.next-btn
+{
+    font-size: 1.1rem;
+    color: white;
+    width: 5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background-color: #3B79B0;
+}
+
+.dating-navbar
+{
+    background-color: #F8F8F8;
+}
+
+.dating-soft-border
+{
+    border: 1px solid rgba(100, 100, 100, 0.15);
+    border-radius: 0.5rem;
+}
+
+.dating-content
+{
+    font-size: 1.2rem;
+    overflow-y: auto;
+}   
+
+.dating-side-note
+{
+    background-color: #EFEFEF;  
+}
+</style>
+
+
+
+<body class="p-5">
+<!-- NAVBAR -->
+    <include href="views/includes/navbar.html" />
+
+<!-- FORM -->
+    <form action="#" method="POST" class="container p-5 dating-content dating-soft-border">
+
+        <h1>Personal Information</h1>
+        <hr />
+        
+    <!-- GENDER -->
+        <div class="row form-group">
+            
+            <label class="col-12 bold">In-door Interests</label>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="form-check mr-4">
+                    <input id="tv" name="indoor_interests[]" type="checkbox" value="tv" class="form-check-input" />
+                    <label for="tv" class="form-check-label">tv</label>
+                </div>
+
+                <div class="form-check">
+                    <input id="puzzles" name="indoor_interests[]" type="checkbox" value="puzzle" class="form-check-input" />
+                    <label for="puzzles" class="form-check-label">puzzles</label>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="form-check mr-4">
+                    <input id="movies" name="indoor_interests[]" type="checkbox" value="movies" class="form-check-input" />
+                    <label for="movies" class="form-check-label">movies</label>
+                </div>
+
+                <div class="form-check">
+                    <input id="reading" name="indoor_interests[]" type="checkbox" value="reading" class="form-check-input" />
+                    <label for="reading" class="form-check-label">reading</label>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="form-check mr-4">
+                    <input id="cooking" name="indoor_interests[]" type="checkbox" value="cooking" class="form-check-input" />
+                    <label for="cooking" class="form-check-label">cooking</label>
+                </div>
+
+                <div class="form-check">
+                    <input id="playing_cards" name="indoor_interests[]" type="checkbox" value="playing_cards" class="form-check-input" />
+                    <label for="playing_cards" class="form-check-label">playing cards</label>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="form-check mr-4">
+                    <input id="board_games" name="indoor_interests[]" type="checkbox" value="board_games" class="form-check-input" />
+                    <label for="board_games" class="form-check-label">board games</label>
+                </div>
+
+                <div class="form-check">
+                    <input id="video_games" name="indoor_interests[]" type="checkbox" value="video_games" class="form-check-input" />
+                    <label for="video_games" class="form-check-label">video games</label>
+                </div>
+            </div>
+
+            </div>
+
+        <div class="row">
+
+        </div>
+        
+    <!-- BUTTON -->
+        <div class="row justify-content-end">
+            <button type="submit" class="btn next-btn">
+                Next&nbsp;&nbsp;&gt;
+            </button>
+        </div>
+
+    </form>
+</body>
+</html>
