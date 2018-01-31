@@ -51,7 +51,13 @@ body
     font-size: 1.2rem;
     overflow-y: auto;
 }   
+
+.dating-side-note
+{
+    background-color: #EFEFEF;  
+}
 </style>
+
 
 
 <body class="p-5">
@@ -59,74 +65,79 @@ body
     <include href="views/includes/navbar.html" />
 
 <!-- FORM -->
-    <form class="container-fluid h-100 p-5 dating-content dating-soft-border">
+    <form class="container p-5 dating-content dating-soft-border">
 
         <h1>Personal Information</h1>
         <hr />
 
         <div class="row">
-            <div class="col-md-9">
-                <div class="container-fluid p-0">
+            <div class="col-md-8">
+                <div class="container-fluid p-3">
                     
-                    <!-- FIRST NAME -->
-                        <div class="row">
-                                <div class="form-group w-100">
-                                    <label class="bold">First Name</label>
-                                    <input name="first_name" type="text" class="form-control" />
-                                </div>
+                <!-- FIRST NAME -->
+                    <div class="row">
+                        <div class="form-group w-100">
+                            <label for="first_name" class="bold">First Name</label>
+                            <input id="first_name" name="first_name" type="text" class="form-control" />
+                        </div>
+                    </div>
+                
+                <!-- LAST NAME -->
+                    <div class="row">
+                        <div class="form-group w-100">
+                            <label for="last_name" class="bold">Last Name</label>
+                            <input id="last_name" name="last_name" type="text" class="form-control" />
+                        </div>
+                    </div>
+            
+                <!-- AGE -->
+                    <div class="row">
+                        <div class="form-group w-100">
+                            <label for="age" class="bold">Age</label>
+                            <input id="age" name="age" type="text" class="form-control" />
+                        </div>
+                    </div>
+            
+                <!-- GENDER -->
+                    <div class="row">
+                        <div class="form-group w-100">
+                            <label class="bold">Gender</label><br />
+            
+                            <div class="form-check form-check-inline mr-4">
+                                <input id="male" name="gender" type="radio" value="male" class="form-check-input" />
+                                <label for="male" class="form-check-label">Male</label>
                             </div>
-                        
-                        <!-- LAST NAME -->
-                            <div class="row">
-                                <div class="form-group w-100">
-                                    <label class="bold">Last Name</label>
-                                    <input name="last_name" type="text" class="form-control" />
-                                </div>
+                            <div class="form-check form-check-inline">
+                                <input id="female" name="gender" type="radio" value="female" class="form-check-input" />
+                                <label for="female" class="form-check-label">Female</label>
                             </div>
-                    
-                        <!-- AGE -->
-                            <div class="row">
-                                <div class="form-group w-100">
-                                    <label class="bold">Age</label>
-                                    <input name="age" type="text" class="form-control" />
-                                </div>
-                            </div>
-                    
-                        <!-- GENDER -->
-                            <div class="row">
-                                <div class="form-group w-100">
-                                    <label class="bold">Gender</label><br />
-                    
-                                    <div class="form-check form-check-inline mr-4">
-                                        <input name="gender" type="radio" value="male" class="form-check-input" />
-                                        <label class="form-check-label">Male</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input name="gender" type="radio" value="female" class="form-check-input" />
-                                        <label class="form-check-label">Female</label>
-                                    </div>
-                                </div>
-                            </div>
-                    
-                        <!-- FIRST NAME -->
-                            <div class="row">
-                                <div class="form-group w-100">
-                                    <label class="bold">Phone Number</label>
-                                    <input name="phone_number" type="text" class="form-control" />
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+            
+                <!-- PHONE NUMBER -->
+                    <div class="row">
+                        <div class="form-group w-100">
+                            <label for="phone_number" class="bold">Phone Number</label>
+                            <input id="phone_number" name="phone_number" type="text" class="form-control" />
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-md-3">
-                <div class="container-fluid p-0">
-                    box thing on the right
+            <div class="col-md-4 mb-5">
+                <div class="dating-side-note dating-soft-border container-fluid p-3">
+                    <p>
+                        <span class="font-weight-bold">Note: </span>
+                        All information entered is protected by our
+                        <a href="#">privacy policy.</a> Profile information
+                        can only be views by others with your permission.
+                    </p>
                 </div>
             </div>
         </div>
 
     <!-- BUTTON -->
-        <div class="row bg-warning justify-content-end">
+        <div class="row justify-content-end">
             <button class="btn next-btn">
                 Next&nbsp;&nbsp;&gt;
             </button>
