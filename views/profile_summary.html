@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@title</title>
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+</head>
+
+<style>
+body
+{
+    font-family: Ubuntu, sans-serif;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+}
+
+.next-btn
+{
+    font-size: 1.1rem;
+    color: white;
+    width: 5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background-color: #3B79B0;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+}
+
+.contact-btn
+{
+    font-size: 1.1rem;
+    color: white;
+    width: 8.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background-color: #3B79B0;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+}
+
+.create-btn
+{
+    font-size: 1.4rem;
+    color: white;
+    width: 13rem;
+    height: 3.5rem;
+    border-radius: 0.5rem;
+    background-color: #3B79B0;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+}
+
+a.contact-btn:hover, a.next-btn:hover
+{
+    color: white;
+}
+
+.dating-navbar
+{
+    background-color: #F8F8F8;
+}
+
+.dating-soft-border
+{
+    border: 1px solid rgba(100, 100, 100, 0.15);
+    border-radius: 0.5rem;
+}
+
+.dating-content
+{
+    font-size: 1.2rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}   
+
+.dating-side-note
+{
+    background-color: #EFEFEF;  
+}
+
+.dating-portait
+{
+    display: block;
+    margin: auto;
+    width: 50%;
+    max-width: 13.5rem; 
+}
+</style>
+
+
+
+<body class="p-1 p-md-5">
+<!-- NAVBAR -->
+    <include href="views/includes/navbar.html" />
+
+<!--  -->
+    <div class="container px-4 px-md-4 py-3 dating-content dating-soft-border">
+        
+    <!-- PROFILE STATS -->
+        <div class="row no-gutters mb-5 flex-wrap-reverse flex-md-wrap">
+
+            <div class="p-0 col-12 col-md-6">
+                <ul class="container-fluid p-0 list-group">
+                    
+                <!-- NAME -->
+                    <li class="list-group-item row no-gutters p-2">
+                        <label for="name" class="m-1 font-weight-bold">Name:</label>
+                        <span id="name" class="m-1">@name</span>
+                    </li>
+
+                <!-- GENDER -->
+                    <li class="list-group-item row no-gutters p-2">
+                        <label for="gender" class="m-1 font-weight-bold">Gender:</label>
+                        <span id="gender" class="m-1">@gender</span>
+                    </li>
+
+                <!-- AGE -->
+                    <li class="list-group-item row no-gutters p-2">
+                        <label for="age" class="m-1 font-weight-bold">Age:</label>
+                        <span id="age" class="m-1">@age</span>
+                    </li>
+
+                <!-- PHONE -->
+                    <li class="list-group-item row no-gutters p-2">
+                        <label for="phone" class="m-1 font-weight-bold">Phone:</label>
+                        <span id="phone" class="m-1">@phone</span>
+                    </li>
+
+                <!-- EMAIl -->
+                    <li class="list-group-item row no-gutters p-2">
+                        <label for="email" class="m-1 font-weight-bold">Email:</label>
+                        <span id="email" class="m-1">@email</span>
+                    </li>
+
+                <!-- STATE -->
+                    <li class="list-group-item row no-gutters p-2">
+                        <label for="state" class="m-1 font-weight-bold">State:</label>
+                        <span id="state" class="m-1">@state</span>
+                    </li>
+
+                <!-- SEEKING -->
+                    <li class="list-group-item row no-gutters p-2">
+                        <label for="seeking" class="m-1 font-weight-bold">Seeking:</label>
+                        <span id="seeking" class="m-1">@seeking</span>
+                    </li>
+
+                <!-- INTERESTS -->
+                    <li class="list-group-item row no-gutters p-2">
+                        <label for="interests" class="m-1 font-weight-bold">Interests:</label>
+                        <span id="interests" class="m-1">@interests</span>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="p-3 col-12 col-md-6">
+                <img class="mb-3 dating-portait" src="../images/user.svg" alt="Default Profile Picture">
+                <h3 class="text-center">Biography</h3>
+                <p class="text-center">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos excepturi eveniet ducimus officiis doloremque, tempore unde optio asperiores ex, laborum in alias consequuntur odit natus voluptatibus, necessitatibus voluptas iure magni?
+                </p>
+            </div>
+        </div>
+        
+    <!-- BUTTON -->
+        <div class="row no-gutters justify-content-center">
+            <a href="#" class="btn contact-btn">
+                Contact Me!
+            </a>
+        </div>
+
+    </div>
+</body>
+</html>
