@@ -57,7 +57,7 @@ body
     font-size: 1.4rem;
     color: white;
     width: 13rem;
-    height: 3.5rem;
+    height: 3.25rem;
     border-radius: 0.5rem;
     background-color: #3B79B0;
     -webkit-appearance: button;
@@ -66,7 +66,8 @@ body
     text-decoration: none;
 }
 
-a.contact-btn:hover, a.next-btn:hover
+a.contact-btn:hover, a.next-btn:hover,
+a.create-btn:hover
 {
     color: white;
 }
