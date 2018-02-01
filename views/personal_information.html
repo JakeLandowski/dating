@@ -5,62 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@title</title>
-    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <include href="views/includes/navbar.html" />
 </head>
 
-<style>
-body
-{
-    font-family: Ubuntu, sans-serif;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow-x: hidden;
-}
-
-.bold
-{
-    font-weight: bold;
-}
-
-.next-btn
-{
-    font-size: 1.1rem;
-    color: white;
-    width: 5rem;
-    height: 2.5rem;
-    border-radius: 0.5rem;
-    background-color: #3B79B0;
-}
-
-.dating-navbar
-{
-    background-color: #F8F8F8;
-}
-
-.dating-soft-border
-{
-    border: 1px solid rgba(100, 100, 100, 0.15);
-    border-radius: 0.5rem;
-}
-
-.dating-content
-{
-    font-size: 1.2rem;
-    overflow-y: auto;
-}   
-
-.dating-side-note
-{
-    background-color: #EFEFEF;  
-}
-</style>
-
-
-
-<body class="p-1 p-md-5">
+<body class="pb-md-5 px-md-5 pt-md-0">
 <!-- NAVBAR -->
     <include href="views/includes/navbar.html" />
 
@@ -77,7 +25,7 @@ body
                 <!-- FIRST NAME -->
                     <div class="row">
                         <div class="form-group w-100">
-                            <label for="first_name" class="bold">First Name</label>
+                            <label for="first_name" class="font-weight-bold">First Name</label>
                             <input id="first_name" name="first_name" type="text" class="form-control" />
                         </div>
                     </div>
@@ -85,7 +33,7 @@ body
                 <!-- LAST NAME -->
                     <div class="row">
                         <div class="form-group w-100">
-                            <label for="last_name" class="bold">Last Name</label>
+                            <label for="last_name" class="font-weight-bold">Last Name</label>
                             <input id="last_name" name="last_name" type="text" class="form-control" />
                         </div>
                     </div>
@@ -93,7 +41,7 @@ body
                 <!-- AGE -->
                     <div class="row">
                         <div class="form-group w-100">
-                            <label for="age" class="bold">Age</label>
+                            <label for="age" class="font-weight-bold">Age</label>
                             <input id="age" name="age" type="text" class="form-control" />
                         </div>
                     </div>
@@ -101,7 +49,7 @@ body
                 <!-- GENDER -->
                     <div class="row">
                         <div class="form-group w-100">
-                            <label class="bold">Gender</label><br />
+                            <label class="font-weight-bold">Gender</label><br />
             
                             <div class="form-check form-check-inline mr-4">
                                 <input id="male" name="gender" type="radio" value="male" class="form-check-input" />
@@ -117,7 +65,7 @@ body
                 <!-- PHONE NUMBER -->
                     <div class="row">
                         <div class="form-group w-100">
-                            <label for="phone_number" class="bold">Phone Number</label>
+                            <label for="phone_number" class="font-weight-bold">Phone Number</label>
                             <input id="phone_number" name="phone_number" type="text" class="form-control" />
                         </div>
                     </div>
@@ -127,7 +75,7 @@ body
             <div class="col-md-4 mb-5">
                 <div class="dating-side-note dating-soft-border container-fluid p-3">
                     <p>
-                        <span class="font-weight-bold">Note: </span>
+                        <span class="font-weight-font-weight-bold">Note: </span>
                         All information entered is protected by our
                         <a href="#">privacy policy.</a> Profile information
                         can only be views by others with your permission.
@@ -137,11 +85,7 @@ body
         </div>
 
     <!-- BUTTON -->
-        <div class="row justify-content-end">
-            <button type="submit" class="btn next-btn">
-                Next&nbsp;&nbsp;&gt;
-            </button>
-        </div>
+        <include href="views/includes/next_button.html" />
 
     </form>
 </body>

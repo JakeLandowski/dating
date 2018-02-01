@@ -73,6 +73,7 @@ a.contact-btn:hover, a.next-btn:hover
 
 .dating-navbar
 {
+    max-width: 1250px;
     background-color: #F8F8F8;
 }
 

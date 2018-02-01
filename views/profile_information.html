@@ -5,60 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@title</title>
-    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <include href="views/includes/style_links.html" />
 </head>
-
-<style>
-body
-{
-    font-family: Ubuntu, sans-serif;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow-x: hidden;
-}
-
-.bold
-{
-    font-weight: bold;
-}
-
-.next-btn
-{
-    font-size: 1.1rem;
-    color: white;
-    width: 5rem;
-    height: 2.5rem;
-    border-radius: 0.5rem;
-    background-color: #3B79B0;
-}
-
-.dating-navbar
-{
-    background-color: #F8F8F8;
-}
-
-.dating-soft-border
-{
-    border: 1px solid rgba(100, 100, 100, 0.15);
-    border-radius: 0.5rem;
-}
-
-.dating-content
-{
-    font-size: 1.2rem;
-    overflow-y: auto;
-}   
-
-.dating-side-note
-{
-    background-color: #EFEFEF;  
-}
-</style>
-
-
 
 <body class="p-1 p-md-5">
 <!-- NAVBAR -->
@@ -121,11 +69,7 @@ body
         </div>
 
     <!-- BUTTON -->
-        <div class="row justify-content-end">
-            <button type="submit" class="btn next-btn">
-                Next&nbsp;&nbsp;&gt;
-            </button>
-        </div>
+        <include href="views/includes/next_button.html" />
 
     </form>
 </body>
