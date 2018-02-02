@@ -22,7 +22,9 @@
                 <div class="form-group w-100">
                     <label for="state" class="bold">State</label>
                     <select name="state" id="state" class="custom-select">
-                        <option value="test">test</option>
+                        <repeat group="{{ @states }}" value="@state">
+                            <option value="{{ $state}} ">{{ $state }}</option>
+                        </repeat>
                     </select>
                 </div>
             </div>

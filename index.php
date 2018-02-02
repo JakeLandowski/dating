@@ -72,6 +72,13 @@ $f3->route('GET|POST /@form', function($f3, $params)
         $f3->set('outdoor_options', $outdoorOptions);
     }    
  
+        //  STATE SELECT OPTIONS
+    if($route === 'profile')
+    {
+        require_once 'model/structures/profile_form_structure.php';
+        $f3->set('states', $states);
+    }
+
         //  IF FORM SUBMITTED : VALIDATE
     if(isPOST())
     { 
