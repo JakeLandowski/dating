@@ -13,7 +13,7 @@
  */
 function validName($name)
 {
-    return strlen($name) > 1 && ctype_alpha($name);
+    return !empty($name) && strlen($name) > 1 && ctype_alpha($name);
 }
 
 /**
@@ -24,7 +24,7 @@ function validName($name)
  */
 function validAge($age)
 {
-    return is_numeric($age) && $age >= 18;
+    return !empty($age) &&  is_numeric($age) && $age >= 18;
 }
 
 /**
@@ -38,5 +38,22 @@ function validPhone($phone)
     $phone = preg_replace('/[^0-9]/', '', $phone);
     $len = strlen($phone);
 
-    return len == 10;  
+    return !empty($phone) && len == 10;  
 }
+
+$firstName   = isset($_POST['first_name'])   ? $_POST['first_name']   : null;
+$lastName    = isset($_POST['last_name'])    ? $_POST['last_name']    : null;
+$age         = isset($_POST['age'])          ? $_POST['age']          : null;  
+$phoneNumber = isset($_POST['phone_number']) ? $_POST['phone_number'] : null;
+
+if(!validName($firstName)) 
+    $errors['first_name'] = 'Please enter a valid first name';
+
+if(!validName($lastName)) 
+    $errors['last_name'] = 'Please enter a valid last name';
+
+if(!validAge($age)) 
+    $errors['age'] = 'Please enter a valid age';
+
+if(!validPhone($phoneNumber)) 
+    $errors['phone_number'] = 'Please enter a valid phone number';

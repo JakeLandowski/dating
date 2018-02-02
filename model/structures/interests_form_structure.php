@@ -1,6 +1,6 @@
 <?php
 
-$indoor_options = 
+$indoorOptions = 
 [
     'tv' => 'Tv',                       'movies' => 'Movies',
     'cooking' => 'Cooking',             'board_games' => 'Board Games',
@@ -8,7 +8,7 @@ $indoor_options =
     'playing_cards' => 'Playing Cards',  'video_games' => 'Video Games'
 ];
 
-$outdoor_options = 
+$outdoorOptions = 
 [
     'hiking' => 'Hiking',       'biking' => 'Biking',
     'swimming' => 'Swimming',   'collecting' => 'Collecting',

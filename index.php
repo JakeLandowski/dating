@@ -28,20 +28,22 @@ const FORMS =
 [
     'personal'  => [
                      'title' => 'Personal Information', 
-                     'guts' => 'views/includes/personal_form.html'
+                     'guts'  => 'views/includes/personal_form.html',
+                     'next'  => '/profile'
                    ],
 
     'profile'   => [
                      'title' => 'Profile Information', 
-                     'guts' => 'views/includes/profile_form.html'
+                     'guts'  => 'views/includes/profile_form.html',
+                     'next'  => '/interests'
                    ],
                    
     'interests' => [
                      'title' => 'Interests Information', 
-                     'guts' => 'views/includes/interests_form.html'
+                     'guts'  => 'views/includes/interests_form.html',
+                     'next'  => '/summary'
                    ]
 ];
-
 
   //================================================//
  //                    ROUTES                      //
@@ -66,13 +68,21 @@ $f3->route('GET|POST /@form', function($f3, $params)
     if($route === 'interests')
     {
         require_once 'model/structures/interests_form_structure.php';
-        $f3->set('indoor_options', $indoor_options);
-        $f3->set('outdoor_options', $outdoor_options);
+        $f3->set('indoor_options', $indoorOptions);
+        $f3->set('outdoor_options', $outdoorOptions);
     }    
-
+ 
         //  IF FORM SUBMITTED : VALIDATE
-    if(isPOST()) 
+    if(isPOST())
+    { 
+        $errors = [];
         require_once "model/validation/validate_{$route}_form.php";
+
+            //  IF NO ERRORS GO TO NEXT PAGE
+        if(empty($errors)) $f3->reroute(FORMS[$route]['next']);
+
+        $f3->set('errors', $errors);
+    }
 
         //  STANDARD RENDER TOKENS
     $f3->mset([

@@ -4,15 +4,18 @@
             
         <!-- FIRST NAME -->
             <div class="row">
-                <div class="form-group w-100">
+                <div class="form-group w-100 position-relative">
                     <label for="first_name" class="font-weight-bold">First Name</label>
                     <input id="first_name" name="first_name" type="text" class="form-control" />
+                    <check if="{{ isset(@errors['first_name']) }}">
+                        <div class="error">{{ @errors['first_name'] }}</div>
+                    </check>  
                 </div>
             </div>
-        
+
         <!-- LAST NAME -->
             <div class="row">
-                <div class="form-group w-100">
+                <div class="form-group w-100 position-relative">
                     <label for="last_name" class="font-weight-bold">Last Name</label>
                     <input id="last_name" name="last_name" type="text" class="form-control" />
                 </div>
@@ -20,7 +23,7 @@
     
         <!-- AGE -->
             <div class="row">
-                <div class="form-group w-100">
+                <div class="form-group w-100 position-relative">
                     <label for="age" class="font-weight-bold">Age</label>
                     <input id="age" name="age" type="text" class="form-control" />
                 </div>
@@ -28,7 +31,7 @@
     
         <!-- GENDER -->
             <div class="row">
-                <div class="form-group w-100">
+                <div class="form-group w-100 position-relative">
                     <label class="font-weight-bold">Gender</label><br />
     
                     <div class="form-check form-check-inline mr-4">
@@ -44,7 +47,7 @@
     
         <!-- PHONE NUMBER -->
             <div class="row">
-                <div class="form-group w-100">
+                <div class="form-group w-100 position-relative">
                     <label for="phone_number" class="font-weight-bold">Phone Number</label>
                     <input id="phone_number" name="phone_number" type="text" class="form-control" />
                 </div>

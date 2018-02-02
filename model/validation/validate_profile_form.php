@@ -13,5 +13,10 @@
  */
 function validEmail($email)
 {
-    return filter_var($email, FILTER_VALIDATE_EMAIL);
+    return !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL);
 }
+
+$email = isset($_POST['email']) ? $_POST['email'] : null; 
+
+if(!validEmail($email)) 
+    $errors['email'] = 'Please enter a valid email';
