@@ -38,7 +38,7 @@ function validPhone($phone)
     $phone = preg_replace('/[^0-9]/', '', $phone);
     $len = strlen($phone);
 
-    return !empty($phone) && len == 10;  
+    return !empty($phone) && $len === 10;  
 }
 
 $firstName   = isset($_POST['first_name'])   ? $_POST['first_name']   : null;
@@ -48,12 +48,20 @@ $phoneNumber = isset($_POST['phone_number']) ? $_POST['phone_number'] : null;
 
 if(!validName($firstName)) 
     $errors['first_name'] = 'Please enter a valid first name';
+else
+    $_SESSION['first_name'] = $firstName;
 
 if(!validName($lastName)) 
     $errors['last_name'] = 'Please enter a valid last name';
+else
+    $_SESSION['last_name'] = $lastName;
 
 if(!validAge($age)) 
     $errors['age'] = 'Please enter a valid age';
+else
+    $_SESSION['age'] = $age;
 
 if(!validPhone($phoneNumber)) 
     $errors['phone_number'] = 'Please enter a valid phone number';
+else
+    $_SESSION['phone_number'] = $firstName;
