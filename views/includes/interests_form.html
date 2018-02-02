@@ -1,6 +1,6 @@
 
 <!-- INDOOR INTERESTS -->
-<div class="row form-group">
+<div class="row form-group {{ isset(@errors['indoor']) ? 'error-border' : '' }}">
     
     <label class="col-12 font-weight-bold">In-door Interests</label>
 
@@ -13,10 +13,14 @@
         </div>   
     </repeat>
 
+    <check if="{{ isset(@errors['indoor']) }}">
+        <div class="error">{{ @errors['indoor'] }}</div>
+    </check>
+
 </div>
 
 <!-- OUTDOOR INTERESTS -->
-<div class="row form-group">
+<div class="row form-group {{ !isset(@errors['outdoor']) ? 'error-border' : '' }}">
     
     <label class="col-12 font-weight-bold">Out-door Interests</label>
 
@@ -28,5 +32,9 @@
             </div> 
         </div>   
     </repeat>
+
+    <check if="{{ isset(@errors['outdoor']) }}">
+        <div class="error">{{ @errors['outdoor'] }}</div>
+    </check>
 
 </div>

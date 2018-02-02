@@ -13,7 +13,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once 'vendor/autoload.php';
-// start session after autoload
+session_start();
 
 $f3 = Base::instance();
 $f3->set('DEBUG', 3);

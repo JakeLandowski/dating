@@ -112,3 +112,8 @@ a.create-btn:hover
     text-align: center;
     width: 100%;
 }
+
+.error-border
+{
+    border-color: red;
+}

@@ -6,11 +6,18 @@
             <div class="row">
                 <div class="form-group w-100">
                     <label for="email" class="bold">Email</label>
-                    <input id="email" name="email" type="text" class="form-control" />
+                    <input id="email" 
+                           name="email" 
+                           type="text" 
+                           class="form-control {{ isset(@errors['email']) ? 'error-border' : '' }}"
+                           value="{{ isset($_SESSION['email']) ? $_SESSION['email'] : '' }}" />
+                    <check if="{{ isset(@errors['email']) }}">
+                        <div class="error">{{ @errors['email'] }}</div>
+                    </check>
                 </div>
             </div>
             
-        <!-- STATE -->
+        <!-- STATE --> <!-- NO VALIDATION -->
             <div class="row">
                 <div class="form-group w-100">
                     <label for="state" class="bold">State</label>
@@ -20,7 +27,7 @@
                 </div>
             </div>
     
-        <!-- GENDER -->
+        <!-- GENDER --> <!-- NO VALIDATION -->
             <div class="row">
                 <div class="form-group w-100">
                     <label class="bold">Seeking</label><br />
@@ -38,7 +45,7 @@
         </div>
     </div>
     
-<!-- BIOGRAPHY -->
+<!-- BIOGRAPHY --> <!-- NO VALIDATION -->
     <div class="col-md-6 mb-5">
         <div class="container-fluid p-3">
             <div class="form-group w-100">

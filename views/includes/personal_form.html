@@ -1,12 +1,18 @@
 <div class="row">
     <div class="col-md-8">
         <div class="container-fluid p-3">
+         
+        <!-- COULD CREATE STRUCTURE FOR THE VALIDATED TEXT INPUTS -->    
             
         <!-- FIRST NAME -->
             <div class="row">
                 <div class="form-group w-100 position-relative">
                     <label for="first_name" class="font-weight-bold">First Name</label>
-                    <input id="first_name" name="first_name" type="text" class="form-control" />
+                    <input id="first_name" 
+                           name="first_name" 
+                           type="text" 
+                           class="form-control {{ isset(@errors['first_name']) ? 'error-border' : '' }}"
+                           value="{{ isset($_SESSION['first_name']) ? $_SESSION['first_name'] : '' }}" />
                     <check if="{{ isset(@errors['first_name']) }}">
                         <div class="error">{{ @errors['first_name'] }}</div>
                     </check>  
@@ -17,7 +23,14 @@
             <div class="row">
                 <div class="form-group w-100 position-relative">
                     <label for="last_name" class="font-weight-bold">Last Name</label>
-                    <input id="last_name" name="last_name" type="text" class="form-control" />
+                    <input id="last_name" 
+                           name="last_name" 
+                           type="text" 
+                           class="form-control {{ isset(@errors['last_name']) ? 'error-border' : '' }}"
+                           value="{{ isset($_SESSION['last_name']) ? $_SESSION['last_name'] : '' }}" />
+                    <check if="{{ isset(@errors['last_name']) }}">
+                        <div class="error">{{ @errors['last_name'] }}</div>
+                    </check>  
                 </div>
             </div>
     
@@ -25,11 +38,18 @@
             <div class="row">
                 <div class="form-group w-100 position-relative">
                     <label for="age" class="font-weight-bold">Age</label>
-                    <input id="age" name="age" type="text" class="form-control" />
+                    <input id="age" 
+                           name="age" 
+                           type="text" 
+                           class="form-control {{ isset(@errors['age']) ? 'error-border' : '' }}"
+                           value="{{ isset($_SESSION['age']) ? $_SESSION['age'] : '' }}" />
+                    <check if="{{ isset(@errors['age']) }}">
+                        <div class="error">{{ @errors['age'] }}</div>
+                    </check>
                 </div>
             </div>
     
-        <!-- GENDER -->
+        <!-- GENDER --> <!-- NO VALIDATION -->
             <div class="row">
                 <div class="form-group w-100 position-relative">
                     <label class="font-weight-bold">Gender</label><br />
@@ -49,7 +69,14 @@
             <div class="row">
                 <div class="form-group w-100 position-relative">
                     <label for="phone_number" class="font-weight-bold">Phone Number</label>
-                    <input id="phone_number" name="phone_number" type="text" class="form-control" />
+                    <input id="phone_number" 
+                           name="phone_number" 
+                           type="text"
+                           class="form-control {{ isset(@errors['phone_number']) ? 'error-border' : '' }}"
+                           value="{{ isset($_SESSION['phone_number']) ? $_SESSION['phone_number'] : '' }}" />
+                    <check if="{{ isset(@errors['phone_number']) }}">
+                        <div class="error">{{ @errors['phone_number'] }}</div>
+                    </check>
                 </div>
             </div>
         </div>
