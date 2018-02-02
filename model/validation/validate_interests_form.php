@@ -15,11 +15,11 @@
  */
 function validSet($set, $whiteList)
 {
-    if(empty($whiteList) || empty($set)) return false;
+    if(empty($whiteList)) return false;
 
     foreach($set as $option)
     {
-        if(!in_array($option, $whiteList)) return false;
+        if(!array_key_exists($option, $whiteList)) return false;
     }
 
     return true;
@@ -51,11 +51,8 @@ function validOutdoor($outdoor, $outdoorOptions)
     return validSet($outdoor, $outdoorOptions);
 }
 
-$indoorInterests  = isset($_POST['indoor_interests'])  ? $_POST['indoor_interests']  : null; 
-$outdoorInterests = isset($_POST['outdoor_interests']) ? $_POST['outdoor_interests'] : null;
-
-$indoorOptions  = $f3->get('indoor_options');
-$outdoorOptions = $f3->get('outdoor_options'); 
+$indoorInterests  = isset($_POST['indoor_interests'])  ? $_POST['indoor_interests']  : []; 
+$outdoorInterests = isset($_POST['outdoor_interests']) ? $_POST['outdoor_interests'] : [];
 
 if(!validIndoor($indoorInterests, $indoorOptions)) 
     $errors['indoor'] = 'Please select valid indoor options';
@@ -67,5 +64,3 @@ if(!validOutdoor($outdoorInterests, $outdoorOptions))
     $errors['outdoor'] = 'Please select valid outdoor options';
 else
     $_SESSION['outdoor_interests'] = $outdoorInterests;
-
-

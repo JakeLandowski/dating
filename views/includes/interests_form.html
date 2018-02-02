@@ -1,13 +1,18 @@
 
 <!-- INDOOR INTERESTS -->
-<div class="row form-group {{ isset(@errors['indoor']) ? 'error-border' : '' }}">
-    
+<div class="row form-group position-relative {{ isset(@errors['indoor']) ? 'error-border' : '' }}">
+        
     <label class="col-12 font-weight-bold">In-door Interests</label>
-
+    
     <repeat group="{{ @indoor_options }}" key="@option" value="@optionDisplay">
         <div class="col-12 col-md-6 col-lg-3 mb-1">
             <div class="form-check">
-                <input id="{{ $option }}" name="indoor_interests[]" type="checkbox" value="{{ $option }}" class="mt-2 form-check-input" />
+                <input id="{{ $option }}" 
+                       name="indoor_interests[]" 
+                       type="checkbox" 
+                       value="{{ $option }}" 
+                       class="mt-2 form-check-input" 
+                       {{ in_array($option, $_SESSION['indoor_interests']) ? 'checked' : '' }}/>
                 <label for="{{ $option }}" class="form-check-label">{{ $optionDisplay }}</label>
             </div> 
         </div>   
@@ -20,14 +25,19 @@
 </div>
 
 <!-- OUTDOOR INTERESTS -->
-<div class="row form-group {{ !isset(@errors['outdoor']) ? 'error-border' : '' }}">
+<div class="row form-group position-relative {{ !isset(@errors['outdoor']) ? 'error-border' : '' }}">
     
     <label class="col-12 font-weight-bold">Out-door Interests</label>
 
     <repeat group="{{ @outdoor_options }}" key="@option" value="@optionDisplay">
         <div class="col-12 col-md-6 col-lg-3 mb-1">
             <div class="form-check">
-                <input id="{{ $option }}" name="outdoor_interests[]" type="checkbox" value="{{ $option }}" class="mt-2 form-check-input" />
+                <input id="{{ $option }}" 
+                       name="outdoor_interests[]" 
+                       type="checkbox" 
+                       value="{{ $option }}" 
+                       class="mt-2 form-check-input"
+                       {{ in_array($option, $_SESSION['outdoor_interests']) ? 'checked' : '' }} />
                 <label for="{{ $option }}" class="form-check-label">{{ $optionDisplay }}</label>
             </div> 
         </div>   
