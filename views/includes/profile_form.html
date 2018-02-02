@@ -33,11 +33,21 @@
                     <label class="bold">Seeking</label><br />
     
                     <div class="form-check form-check-inline mr-4">
-                        <input id="male" name="seeking_gender" type="radio" value="male" class="form-check-input" />
+                        <input id="male" 
+                               name="seeking_gender" 
+                               type="radio" 
+                               value="male" 
+                               class="form-check-input"
+                               {{ isset($_SESSION['seeking']) && $_SESSION['seeking'] === 'male' ? 'checked="checked"' : ''}} />
                         <label for="male" class="form-check-label">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input id="female" name="seeking_gender" type="radio" value="female" class="form-check-input" />
+                        <input id="female" 
+                               name="seeking_gender" 
+                               type="radio" 
+                               value="female" 
+                               class="form-check-input"
+                               {{ isset($_SESSION['seeking']) && $_SESSION['seeking'] === 'female' ? 'checked="checked"' : ''}} />
                         <label for="female" class="form-check-label">Female</label>
                     </div>
                 </div>

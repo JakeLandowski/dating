@@ -24,49 +24,71 @@
                 <!-- NAME -->
                     <li class="list-group-item row no-gutters p-2">
                         <label for="name" class="m-1 font-weight-bold">Name:</label>
-                        <span id="name" class="m-1">@name</span>
+                        <span id="name" class="m-1">
+                            {{ exists($_SESSION['first_name']) ? $_SESSION['first_name'] : 'Unspecified' }}
+                            {{ exists($_SESSION['last_name']) ? $_SESSION['last_name'] : 'Unspecified' }}
+                        </span>
                     </li>
 
                 <!-- GENDER -->
                     <li class="list-group-item row no-gutters p-2">
                         <label for="gender" class="m-1 font-weight-bold">Gender:</label>
-                        <span id="gender" class="m-1">@gender</span>
+                        <span id="gender" class="m-1">
+                                {{ exists($_SESSION['gender']) ? ucfirst($_SESSION['gender']) : 'Unspecified' }}
+                        </span>
                     </li>
 
                 <!-- AGE -->
                     <li class="list-group-item row no-gutters p-2">
                         <label for="age" class="m-1 font-weight-bold">Age:</label>
-                        <span id="age" class="m-1">@age</span>
+                        <span id="age" class="m-1">
+                                {{ exists($_SESSION['age']) ? $_SESSION['age'] : 'Unspecified' }}
+                        </span>
                     </li>
 
                 <!-- PHONE -->
                     <li class="list-group-item row no-gutters p-2">
                         <label for="phone" class="m-1 font-weight-bold">Phone:</label>
-                        <span id="phone" class="m-1">@phone</span>
+                        <span id="phone" class="m-1">
+                                {{ exists($_SESSION['phone_number']) ? $_SESSION['phone_number'] : 'Unspecified' }}
+                        </span>
                     </li>
 
                 <!-- EMAIl -->
                     <li class="list-group-item row no-gutters p-2">
                         <label for="email" class="m-1 font-weight-bold">Email:</label>
-                        <span id="email" class="m-1">@email</span>
+                        <span id="email" class="m-1">
+                                {{ exists($_SESSION['email']) ? $_SESSION['email'] : 'Unspecified' }}
+                        </span>
                     </li>
 
                 <!-- STATE -->
                     <li class="list-group-item row no-gutters p-2">
                         <label for="state" class="m-1 font-weight-bold">State:</label>
-                        <span id="state" class="m-1">@state</span>
+                        <span id="state" class="m-1">
+                                {{ exists($_SESSION['state']) ? $_SESSION['state'] : 'Unspecified' }}
+                        </span>
                     </li>
 
                 <!-- SEEKING -->
                     <li class="list-group-item row no-gutters p-2">
                         <label for="seeking" class="m-1 font-weight-bold">Seeking:</label>
-                        <span id="seeking" class="m-1">@seeking</span>
+                        <span id="seeking" class="m-1">
+                                {{ exists($_SESSION['seeking']) ? ucifrst($_SESSION['seeking']) : 'Unspecified' }}
+                        </span>
                     </li>
 
                 <!-- INTERESTS -->
                     <li class="list-group-item row no-gutters p-2">
                         <label for="interests" class="m-1 font-weight-bold">Interests:</label>
-                        <span id="interests" class="m-1">@interests</span>
+                        <span id="interests" class="m-1">
+                            <repeat group="@indoor_interests" value="@interest">
+                                {{ @indoor_options[$interest] }},
+                            </repeat>
+                            <repeat group="@outdoor_interests" value="@interest">
+                                {{ @outdoor_options[$interest] }},
+                            </repeat>
+                        </span>
                     </li>
 
                 </ul>
@@ -76,7 +98,7 @@
                 <img class="mb-3 dating-portait" src="../images/user.svg" alt="Default Profile Picture">
                 <h3 class="text-center">Biography</h3>
                 <p class="text-center">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos excepturi eveniet ducimus officiis doloremque, tempore unde optio asperiores ex, laborum in alias consequuntur odit natus voluptatibus, necessitatibus voluptas iure magni?
+                    {{ exists($_SESSION['biography']) ? $_SESSION['biography'] : 'Unspecified' }}
                 </p>
             </div>
         </div>

@@ -64,4 +64,7 @@ else
 if(!validPhone($phoneNumber)) 
     $errors['phone_number'] = 'Please enter a valid phone number';
 else
-    $_SESSION['phone_number'] = $firstName;
+    $_SESSION['phone_number'] = $phoneNumber;
+
+    // NOT VALIDATED
+$_SESSION['gender'] = isset($_POST['gender']) ? $_POST['gender'] : '';

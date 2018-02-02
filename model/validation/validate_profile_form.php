@@ -22,3 +22,8 @@ if(!validEmail($email))
     $errors['email'] = 'Please enter a valid email';
 else
     $_SESSION['email'] = $email;
+
+    // NOT VALIDATED
+$_SESSION['state']     = isset($_POST['state'])     ? $_POST['state']     : '';
+$_SESSION['seeking']   = isset($_POST['seeking'])   ? $_POST['seeking']   : '';
+$_SESSION['biography'] = isset($_POST['biography']) ? $_POST['biography'] : '';

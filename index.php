@@ -95,8 +95,20 @@ $f3->route('GET|POST /@form', function($f3, $params)
 });
 
     //  SUMMARY ROUTE
-$f3->route('GET /summary', function()
+$f3->route('GET /summary', function($f3)
 {
+    $indoorInterests  = isset($_SESSION['indoor_interests'])  ? $_SESSION['indoor_interests']  : [];
+    $outdoorInterests = isset($_SESSION['outdoor_interests']) ? $_SESSION['outdoor_interests'] : [];
+
+    require_once 'model/structures/interests_form_structure.php';
+
+    $f3->mset([
+        'indoor_interests'  => $indoorInterests,
+        'indoor_options'    => $indoorOptions,
+        'outdoor_interests' => $outdoorInterests,
+        'outdoor_options'   => $outdoorOptions
+    ]);
+
     echo Template::instance()->render('views/profile_summary.html');
 });
 

@@ -19,3 +19,12 @@ function isGET()
     return $_SERVER['REQUEST_METHOD'] === 'GET';
 }
 
+/**
+ *  Tells if value is set AND not empty
+ * 
+ *  @return boolean     True if both set and not empty
+ */
+function exists(&$thing)
+{
+    return isset($thing) && !empty($thing);
+}
