@@ -20,3 +20,5 @@ $email = isset($_POST['email']) ? $_POST['email'] : null;
 
 if(!validEmail($email)) 
     $errors['email'] = 'Please enter a valid email';
+else
+    $_SESSION['email'] = $email;
