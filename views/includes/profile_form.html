@@ -23,7 +23,11 @@
                     <label for="state" class="bold">State</label>
                     <select name="state" id="state" class="custom-select">
                         <repeat group="{{ @states }}" value="@state">
-                            <option value="{{ $state }}">{{ $state }}</option>
+                            <option value="{{ $state }}"
+                            {{ isset($_SESSION['state']) &&
+                               $_SESSION['state'] === $state
+                               ? 'selected' : ''}}
+                            >{{ $state }}</option>
                         </repeat>
                     </select>
                 </div>
