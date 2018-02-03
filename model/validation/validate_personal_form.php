@@ -28,17 +28,28 @@ function validAge($age)
 }
 
 /**
- *  Validates a given phone number.
+ *  Will strip the phone number of all non digit 
+ *  characters and then validate its length. This
+ *  modifies the given phone number.
  * 
- *  @param int $phone     The int being validated.
- *  @return boolean       True if phone number is valid
+ *  @param int &$phone     Reference to the number being validated.
+ *  @return boolean        True if phone number is valid
  */
-function validPhone($phone)
+function validPhone(&$phone)
 {
     $phone = preg_replace('/[^0-9]/', '', $phone);
     $len = strlen($phone);
+    $isValid = !empty($phone) && $len === 10;
 
-    return !empty($phone) && $len === 10;  
+    if($isValid)
+    {
+        $phone = substr_replace($phone, '(', 0, 0);
+        $phone = substr_replace($phone, ')', 4, 0);
+        $phone = substr_replace($phone, '-', 5, 0);
+        $phone = substr_replace($phone, '-', 9, 0);
+    }
+
+    return $isValid;  
 }
 
 $firstName   = isset($_POST['first_name'])   ? $_POST['first_name']   : null;

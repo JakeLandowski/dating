@@ -12,10 +12,9 @@
 <!-- NAVBAR -->
     <include href="views/includes/navbar.html" />
 
-<!--  -->
+<!-- PROFILE STATS -->
     <div class="container px-4 px-md-4 py-3 dating-content dating-soft-border">
         
-    <!-- PROFILE STATS -->
         <div class="row no-gutters mb-5 flex-wrap-reverse flex-md-wrap">
 
             <div class="p-0 col-12 col-md-6">
@@ -74,7 +73,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label for="seeking" class="m-1 font-weight-bold">Seeking:</label>
                         <span id="seeking" class="m-1">
-                                {{ exists($_SESSION['seeking']) ? ucifrst($_SESSION['seeking']) : 'Unspecified' }}
+                                {{ exists($_SESSION['seeking_gender']) ? ucfirst($_SESSION['seeking_gender']) : 'Unspecified' }}
                         </span>
                     </li>
 

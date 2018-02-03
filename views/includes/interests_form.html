@@ -12,7 +12,11 @@
                        type="checkbox" 
                        value="{{ $option }}" 
                        class="mt-2 form-check-input" 
-                       {{ in_array($option, $_SESSION['indoor_interests']) ? 'checked' : '' }}/>
+                       {{ 
+                        isset($_SESSION['indoor_interests']) && 
+                        in_array($option, $_SESSION['indoor_interests']) 
+                        ? 'checked' : '' 
+                     }} />
                 <label for="{{ $option }}" class="form-check-label">{{ $optionDisplay }}</label>
             </div> 
         </div>   
@@ -37,7 +41,11 @@
                        type="checkbox" 
                        value="{{ $option }}" 
                        class="mt-2 form-check-input"
-                       {{ in_array($option, $_SESSION['outdoor_interests']) ? 'checked' : '' }} />
+                       {{ 
+                           isset($_SESSION['outdoor_interests']) && 
+                           in_array($option, $_SESSION['outdoor_interests']) 
+                           ? 'checked' : '' 
+                        }} />
                 <label for="{{ $option }}" class="form-check-label">{{ $optionDisplay }}</label>
             </div> 
         </div>   

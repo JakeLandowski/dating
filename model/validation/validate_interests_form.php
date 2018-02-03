@@ -38,7 +38,7 @@ function validIndoor($indoor, $indoorOptions)
     return validSet($indoor, $indoorOptions);    
 }
 
-  /**
+/**
  *  Checks to see if the set of Outdoor options chosen by the user
  *  are valid.
  * 
