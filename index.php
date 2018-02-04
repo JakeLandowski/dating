@@ -109,12 +109,16 @@ $f3->route('GET /summary', function($f3)
 
     require_once 'model/structures/interests_form_structure.php';
 
-    $f3->mset([
-        'indoor_interests'  => $indoorInterests,
-        'indoor_options'    => $indoorOptions,
-        'outdoor_interests' => $outdoorInterests,
-        'outdoor_options'   => $outdoorOptions
-    ]);
+        //  GET ARRAY OF ALL CHOSEN INTERESTS
+        //  AS ITS DISPLAY VALUE
+    $options   = array_merge($indoorOptions, $outdoorOptions);
+    $interests = array_merge($indoorInterests, $outdoorInterests);
+    $displayedInterests = [];
+
+    foreach($interests as $interest)
+        $displayedInterests[] = $options[$interest];
+
+    $f3->set('interests', $displayedInterests);
 
     echo Template::instance()->render('views/profile_summary.html');
 });

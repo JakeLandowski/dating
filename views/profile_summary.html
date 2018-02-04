@@ -80,13 +80,8 @@
                 <!-- INTERESTS -->
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Interests:</label>
-                        <span id="interests" class="m-1">
-                            <repeat group="@indoor_interests" value="@interest">
-                                {{ @indoor_options[$interest] }},
-                            </repeat>
-                            <repeat group="@outdoor_interests" value="@interest">
-                                {{ @outdoor_options[$interest] }},
-                            </repeat>
+                        <span id="interests">
+                            {{ implode(@interests, ', ') }} 
                         </span>
                     </li>
 
