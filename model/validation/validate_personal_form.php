@@ -51,10 +51,16 @@ function validPhone(&$phone)
 
     return $isValid;  
 }
-
+    //  CHECK PREMIUM STATE OF USER
 $isPremium = isset($_POST['premium_membership']);
 
-$_SESSION['member_data'] = $isPremium ? new PremiumMember() : new Member();
+    //  STORE USER STATE AND DATA 
+$_SESSION['is_premium']  = $isPremium;
+
+if(!exists($_SESSION['member_data']))
+{
+    $_SESSION['member_data'] = $isPremium ? new PremiumMember() : new Member();
+}
 
 $memberData = $_SESSION['member_data'];
 
