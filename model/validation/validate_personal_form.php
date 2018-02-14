@@ -52,6 +52,12 @@ function validPhone(&$phone)
     return $isValid;  
 }
 
+$isPremium = isset($_POST['premium_membership']);
+
+$_SESSION['member_data'] = $isPremium ? new PremiumMember() : new Member();
+
+$memberData = $_SESSION['member_data'];
+
 $firstName   = isset($_POST['first_name'])   ? $_POST['first_name']   : null;
 $lastName    = isset($_POST['last_name'])    ? $_POST['last_name']    : null;
 $age         = isset($_POST['age'])          ? $_POST['age']          : null;  
@@ -60,22 +66,23 @@ $phoneNumber = isset($_POST['phone_number']) ? $_POST['phone_number'] : null;
 if(!validName($firstName)) 
     $errors['first_name'] = 'Please enter a valid first name';
 else
-    $_SESSION['first_name'] = $firstName;
+    $memberData->setFName($firstName);
 
 if(!validName($lastName)) 
     $errors['last_name'] = 'Please enter a valid last name';
 else
-    $_SESSION['last_name'] = $lastName;
+    $memberData->setLName($lastName);
 
 if(!validAge($age)) 
     $errors['age'] = 'Please enter a valid age';
 else
-    $_SESSION['age'] = $age;
+    $memberData->setAge($age);
 
 if(!validPhone($phoneNumber)) 
     $errors['phone_number'] = 'Please enter a valid phone number';
 else
-    $_SESSION['phone_number'] = $phoneNumber;
+    $memberData->setPhone($phoneNumber);
 
     // NOT VALIDATED
-$_SESSION['gender'] = isset($_POST['gender']) ? $_POST['gender'] : '';
+$gender = isset($_POST['gender']) ? $_POST['gender'] : '';
+$memberData->setGender($gender);
