@@ -37,7 +37,7 @@ const FORMS =
                      'guts'  => 'views/includes/profile_form.html',
                      'next'  => '/interests'
                    ],
-                   
+       
     'interests' => [
                      'title' => 'Interests Information', 
                      'guts'  => 'views/includes/interests_form.html',
@@ -95,7 +95,8 @@ $f3->route('GET|POST /@form', function($f3, $params)
     $f3->mset([
         'route'     => $route,
         'formTitle' => FORMS[$route]['title'],
-        'formGuts'  => FORMS[$route]['guts']
+        'formGuts'  => FORMS[$route]['guts'],
+        'memberData'  => $_SESSION['member_data'] 
     ]);
 
     echo Template::instance()->render('views/form_page.html');
