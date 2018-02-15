@@ -10,7 +10,7 @@
                            name="email" 
                            type="text" 
                            class="form-control {{ isset(@errors['email']) ? 'error-border' : '' }}"
-                           value="{{ @memberData->getEmail() }}" />
+                           value="{{ isset(@memberData) ? @memberData->getEmail() : '' }}" />
                     <check if="{{ isset(@errors['email']) }}">
                         <div class="error">{{ @errors['email'] }}</div>
                     </check>
@@ -24,7 +24,7 @@
                     <select name="state" id="state" class="custom-select">
                         <repeat group="{{ @states }}" value="@state">
                             <option value="{{ $state }}"
-                            {{ @memberData->getState() === $state
+                            {{ isset(@memberData) && @memberData->getState() === $state
                                ? 'selected' : ''}}
                             >{{ $state }}</option>
                         </repeat>
@@ -43,7 +43,7 @@
                                type="radio" 
                                value="male" 
                                class="form-check-input"
-                               {{ @memberData->getSeeking() === 'male' ? 'checked="checked"' : ''}} />
+                               {{ isset(@memberData) && @memberData->getSeeking() === 'male' ? 'checked="checked"' : ''}} />
                         <label for="male" class="form-check-label">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -52,7 +52,7 @@
                                type="radio" 
                                value="female" 
                                class="form-check-input"
-                               {{ @memberData->getSeeking() === 'female' ? 'checked="checked"' : ''}} />
+                               {{ isset(@memberData) && @memberData->getSeeking() === 'female' ? 'checked="checked"' : ''}} />
                         <label for="female" class="form-check-label">Female</label>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
             <div class="form-group w-100">
                 <label for="biography" class="bold">Biography</label>
                 <textarea rows="8" class="form-control dating-soft-border" name="biography" id="biography"
-                >{{ @memberData->getBio() }}</textarea>
+                >{{ isset(@memberData) ? @memberData->getBio() : '' }}</textarea>
             </div>
         </div>
     </div>
