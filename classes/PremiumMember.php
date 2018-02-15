@@ -12,6 +12,12 @@ class PremiumMember extends Member
     public function setInDoorInterests($inDoorInterests)
     { $this->inDoorInterests = $inDoorInterests; }
 
+    public function getInDoorInterests()
+    { return $this->inDoorInterests; }
+
     public function setOutDoorInterests($outDoorInterests)
     { $this->outDoorInterests = $outDoorInterests; }
+
+    public function getOutDoorInterests()
+    { return $this->OutDoorInterests; }
 }
