@@ -27,23 +27,23 @@ require_once 'model/routing_functions.php';
 const FORMS = 
 [
     'personal'  => [
-                     'title' => 'Personal Information', 
-                     'guts'  => 'views/includes/personal_form.html',
-                     'member_next'  => '/profile',
+                     'title'                => 'Personal Information', 
+                     'guts'                 => 'views/includes/personal_form.html',
+                     'member_next'          => '/profile',
                      'premium_member_next'  => '/profile'
                    ],
 
     'profile'   => [
-                     'title' => 'Profile Information', 
-                     'guts'  => 'views/includes/profile_form.html',
-                     'member_next'  => '/summary',
+                     'title'                => 'Profile Information', 
+                     'guts'                 => 'views/includes/profile_form.html',
+                     'member_next'          => '/summary',
                      'premium_member_next'  => '/interests'
                    ],
        
     'interests' => [
-                     'title' => 'Interests Information', 
-                     'guts'  => 'views/includes/interests_form.html',
-                     'member_next'  => '/summary',
+                     'title'                => 'Interests Information', 
+                     'guts'                 => 'views/includes/interests_form.html',
+                     'member_next'          => '/summary',
                      'premium_member_next'  => '/summary'
                    ]
 ];
