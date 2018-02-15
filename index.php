@@ -29,19 +29,22 @@ const FORMS =
     'personal'  => [
                      'title' => 'Personal Information', 
                      'guts'  => 'views/includes/personal_form.html',
-                     'next'  => '/profile'
+                     'member_next'  => '/profile',
+                     'premium_member_next'  => '/profile'
                    ],
 
     'profile'   => [
                      'title' => 'Profile Information', 
                      'guts'  => 'views/includes/profile_form.html',
-                     'next'  => '/interests'
+                     'member_next'  => '/summary',
+                     'premium_member_next'  => '/interests'
                    ],
        
     'interests' => [
                      'title' => 'Interests Information', 
                      'guts'  => 'views/includes/interests_form.html',
-                     'next'  => '/summary'
+                     'member_next'  => '/summary',
+                     'premium_member_next'  => '/summary'
                    ]
 ];
 
@@ -86,7 +89,12 @@ $f3->route('GET|POST /@form', function($f3, $params)
         require_once "model/validation/validate_{$route}_form.php";
 
             //  IF NO ERRORS GO TO NEXT PAGE
-        if(empty($errors)) $f3->reroute(FORMS[$route]['next']);
+        if(empty($errors)) 
+        {
+            $isPremium = isset($_SESSION['is_premium']) && $_SESSION['is_premium'];
+            $next = $isPremium ? 'premium_member_next' : 'member_next'; 
+            $f3->reroute(FORMS[$route][$next]);
+        }
 
         $f3->set('errors', $errors);
     }
