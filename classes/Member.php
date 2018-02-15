@@ -8,11 +8,11 @@ class Member
     
     public function __construct($fname='', $lname='', $age='', $gender='', $phone='')
     {
-        setFName($fname);
-        setLName($lname);
-        setAge($age);
-        setGender($gender);
-        setPhone($phone);
+        $this->setFName($fname);
+        $this->setLName($lname);
+        $this->setAge($age);
+        $this->setGender($gender);
+        $this->setPhone($phone);
     }
 
     public function setFName($fname)
@@ -21,7 +21,7 @@ class Member
     public function getFName()
     { return $this->fname; }
 
-    public function setLName($lfname)
+    public function setLName($lname)
     { $this->lname = $lname; }
 
     public function getLName()

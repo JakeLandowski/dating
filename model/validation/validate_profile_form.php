@@ -16,14 +16,20 @@ function validEmail($email)
     return !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
+$memberData = $_SESSION['member_data'];
+
 $email = isset($_POST['email']) ? $_POST['email'] : null; 
 
 if(!validEmail($email)) 
     $errors['email'] = 'Please enter a valid email';
 else
-    $_SESSION['email'] = $email;
+    $memberData->setEmail($email);
 
     // NOT VALIDATED
-$_SESSION['state'] = isset($_POST['state']) ? $_POST['state'] : '';
-$_SESSION['seeking_gender'] = isset($_POST['seeking_gender']) ? $_POST['seeking_gender'] : '';
-$_SESSION['biography'] = isset($_POST['biography']) ? $_POST['biography'] : '';
+$state = isset($_POST['state']) ? $_POST['state'] : '';
+$seeking_gender = isset($_POST['seeking_gender']) ? $_POST['seeking_gender'] : '';
+$biography = isset($_POST['biography']) ? $_POST['biography'] : '';
+
+$memberData->setState($state);
+$memberData->setSeeking($seeking_gender);
+$memberData->setBio($biography);

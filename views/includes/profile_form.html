@@ -10,7 +10,7 @@
                            name="email" 
                            type="text" 
                            class="form-control {{ isset(@errors['email']) ? 'error-border' : '' }}"
-                           value="{{ isset($_SESSION['email']) ? $_SESSION['email'] : '' }}" />
+                           value="{{ @memberData->getEmail() }}" />
                     <check if="{{ isset(@errors['email']) }}">
                         <div class="error">{{ @errors['email'] }}</div>
                     </check>
@@ -24,8 +24,7 @@
                     <select name="state" id="state" class="custom-select">
                         <repeat group="{{ @states }}" value="@state">
                             <option value="{{ $state }}"
-                            {{ isset($_SESSION['state']) &&
-                               $_SESSION['state'] === $state
+                            {{ @memberData->getState() === $state
                                ? 'selected' : ''}}
                             >{{ $state }}</option>
                         </repeat>
@@ -44,7 +43,7 @@
                                type="radio" 
                                value="male" 
                                class="form-check-input"
-                               {{ isset($_SESSION['seeking_gender']) && $_SESSION['seeking_gender'] === 'male' ? 'checked="checked"' : ''}} />
+                               {{ @memberData->getSeeking() === 'male' ? 'checked="checked"' : ''}} />
                         <label for="male" class="form-check-label">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -53,7 +52,7 @@
                                type="radio" 
                                value="female" 
                                class="form-check-input"
-                               {{ isset($_SESSION['seeking_gender']) && $_SESSION['seeking_gender'] === 'female' ? 'checked="checked"' : ''}} />
+                               {{ @memberData->getSeeking() === 'female' ? 'checked="checked"' : ''}} />
                         <label for="female" class="form-check-label">Female</label>
                     </div>
                 </div>
@@ -67,7 +66,7 @@
             <div class="form-group w-100">
                 <label for="biography" class="bold">Biography</label>
                 <textarea rows="8" class="form-control dating-soft-border" name="biography" id="biography"
-                >{{ isset($_SESSION['biography']) ? $_SESSION['biography'] : '' }}</textarea>
+                >{{ @memberData->getBio() }}</textarea>
             </div>
         </div>
     </div>

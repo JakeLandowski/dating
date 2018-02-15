@@ -91,12 +91,12 @@ $f3->route('GET|POST /@form', function($f3, $params)
         $f3->set('errors', $errors);
     }
 
-        //  STANDARD RENDER TOKENS
+        //  BOTH POST|GET STANDARD RENDER TOKENS
     $f3->mset([
-        'route'     => $route,
-        'formTitle' => FORMS[$route]['title'],
-        'formGuts'  => FORMS[$route]['guts'],
-        'memberData'  => $_SESSION['member_data'] 
+        'route'      => $route,
+        'formTitle'  => FORMS[$route]['title'],
+        'formGuts'   => FORMS[$route]['guts'],
+        'memberData' => $_SESSION['member_data'] 
     ]);
 
     echo Template::instance()->render('views/form_page.html');
@@ -108,6 +108,7 @@ $f3->route('GET /summary', function($f3)
     $indoorInterests  = isset($_SESSION['indoor_interests'])  ? $_SESSION['indoor_interests']  : [];
     $outdoorInterests = isset($_SESSION['outdoor_interests']) ? $_SESSION['outdoor_interests'] : [];
 
+        //  FOR CHECKBOX DISPLAY OPTIONS
     require_once 'model/structures/interests_form_structure.php';
 
         //  GET ARRAY OF ALL CHOSEN INTERESTS
@@ -116,6 +117,7 @@ $f3->route('GET /summary', function($f3)
     $interests = array_merge($indoorInterests, $outdoorInterests);
     $displayedInterests = [];
 
+        //  GET DISPLAY FRIENDLY VERSION OF EACH
     foreach($interests as $interest)
         $displayedInterests[] = $options[$interest];
 
