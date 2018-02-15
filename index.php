@@ -52,13 +52,13 @@ const FORMS =
  //                    ROUTES                      //
 //================================================//
 
-    //  HOME ROUTE
+// ~~~~~~~~~~~ HOME ROUTE ~~~~~~~~~~~~ //
 $f3->route('GET /', function()
 {
     echo Template::instance()->render('views/home.html');
 });
 
-    //  FORM ROUTE
+// ~~~~~~~~~~~ FORMS ROUTE [Personal, Profile, Interests] ~~~~~~~~~~~~ //
 $f3->route('GET|POST /@form', function($f3, $params)
 {
     $route = $params['form'];
@@ -70,6 +70,9 @@ $f3->route('GET|POST /@form', function($f3, $params)
         //  INTEREST CHECKBOX OPTIONS
     if($route === 'interests')
     {
+        if(!isset($_SESSION['is_premium']) || !$_SESSION['is_premium'])
+            $f3->reroute(FORMS[$route][$next]);
+
         require_once 'model/structures/interests_form_structure.php';
         $f3->set('indoor_options', $indoorOptions);
         $f3->set('outdoor_options', $outdoorOptions);
@@ -110,7 +113,7 @@ $f3->route('GET|POST /@form', function($f3, $params)
     echo Template::instance()->render('views/form_page.html');
 });
 
-    //  SUMMARY ROUTE
+// ~~~~~~~~~~~ SUMMARY ROUTE ~~~~~~~~~~~~ //
 $f3->route('GET /summary', function($f3)
 {
     $indoorInterests  = isset($_SESSION['indoor_interests'])  ? $_SESSION['indoor_interests']  : [];
