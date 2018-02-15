@@ -51,16 +51,17 @@ function validOutdoor($outdoor, $outdoorOptions)
     return validSet($outdoor, $outdoorOptions);
 }
 
+$memberData = $_SESSION['member_data'];
+
 $indoorInterests  = isset($_POST['indoor_interests'])  ? $_POST['indoor_interests']  : []; 
 $outdoorInterests = isset($_POST['outdoor_interests']) ? $_POST['outdoor_interests'] : [];
 
 if(!validIndoor($indoorInterests, $indoorOptions)) 
     $errors['indoor'] = 'Please select valid indoor options';
 else
-    $_SESSION['indoor_interests'] = $indoorInterests;
-
+    $memberData->setInDoorInterests($indoorInterests);
 
 if(!validOutdoor($outdoorInterests, $outdoorOptions)) 
     $errors['outdoor'] = 'Please select valid outdoor options';
 else
-    $_SESSION['outdoor_interests'] = $outdoorInterests;
+    $memberData->setInDoorInterests($outdoorInterests);
