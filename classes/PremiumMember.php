@@ -24,10 +24,10 @@ class PremiumMember extends Member
     /**
      *  Sets the array of chosen indoor interests.
      * 
-     *  @param Array $_inDoorInterests      The array of indoor interests
+     *  @param Array $inDoorInterests      The array of indoor interests
      */
-    public function _setInDoorInterests($_inDoorInterests)
-    { $this->_inDoorInterests = $_inDoorInterests; }
+    public function _setInDoorInterests($inDoorInterests)
+    { $this->_inDoorInterests = $inDoorInterests; }
 
     /**
      *  Gets the array of chosen indoor interests.
@@ -40,10 +40,10 @@ class PremiumMember extends Member
     /**
      *  Sets the array of chosen outdoor interests.
      * 
-     *  @param Array $_outDoorInterests      The array of outdoor interests
+     *  @param Array $outDoorInterests      The array of outdoor interests
      */
-    public function setOutDoorInterests($_outDoorInterests)
-    { $this->_outDoorInterests = $_outDoorInterests; }
+    public function setOutDoorInterests($outDoorInterests)
+    { $this->_outDoorInterests = $outDoorInterests; }
 
     /**
      *  Gets the array of chosen outdoor interests.
