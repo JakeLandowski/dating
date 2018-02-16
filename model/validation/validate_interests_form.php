@@ -53,6 +53,8 @@ function validOutdoor($outdoor, $outdoorOptions)
 
 $memberData = $_SESSION['member_data'];
 
+var_dump($memberData);
+
 $indoorInterests  = isset($_POST['indoor_interests'])  ? $_POST['indoor_interests']  : []; 
 $outdoorInterests = isset($_POST['outdoor_interests']) ? $_POST['outdoor_interests'] : [];
 
@@ -64,4 +66,4 @@ else
 if(!validOutdoor($outdoorInterests, $outdoorOptions)) 
     $errors['outdoor'] = 'Please select valid outdoor options';
 else
-    $memberData->setInDoorInterests($outdoorInterests);
+    $memberData->setOutDoorInterests($outdoorInterests);

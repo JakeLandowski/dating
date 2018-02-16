@@ -62,6 +62,8 @@ $f3->route('GET /', function()
 $f3->route('GET|POST /@form', function($f3, $params)
 {
     $route = $params['form'];
+    $isPremium = isset($_SESSION['is_premium']) && $_SESSION['is_premium'];
+    $next = $isPremium ? 'premium_member_next' : 'member_next';
 
         //  IF INVALID ROUTE
     if(!array_key_exists($route, FORMS)) 
@@ -70,9 +72,11 @@ $f3->route('GET|POST /@form', function($f3, $params)
         //  INTEREST CHECKBOX OPTIONS
     if($route === 'interests')
     {
+            //  IF NOT PREMIUM SKIP INTERESTS
         if(!isset($_SESSION['is_premium']) || !$_SESSION['is_premium'])
             $f3->reroute(FORMS[$route][$next]);
 
+            //  CONTAINS INTEREST OPTIONS ARRAY
         require_once 'model/structures/interests_form_structure.php';
         $f3->set('indoor_options', $indoorOptions);
         $f3->set('outdoor_options', $outdoorOptions);
@@ -93,9 +97,7 @@ $f3->route('GET|POST /@form', function($f3, $params)
 
             //  IF NO ERRORS GO TO NEXT PAGE
         if(empty($errors)) 
-        {
-            $isPremium = isset($_SESSION['is_premium']) && $_SESSION['is_premium'];
-            $next = $isPremium ? 'premium_member_next' : 'member_next'; 
+        { 
             $f3->reroute(FORMS[$route][$next]);
         }
 
@@ -116,23 +118,29 @@ $f3->route('GET|POST /@form', function($f3, $params)
 // ~~~~~~~~~~~ SUMMARY ROUTE ~~~~~~~~~~~~ //
 $f3->route('GET /summary', function($f3)
 {
-    $indoorInterests  = isset($_SESSION['indoor_interests'])  ? $_SESSION['indoor_interests']  : [];
-    $outdoorInterests = isset($_SESSION['outdoor_interests']) ? $_SESSION['outdoor_interests'] : [];
+    $memberData = $_SESSION['member_data'];
+    $f3->set('memberData', $memberData);
 
-        //  FOR CHECKBOX DISPLAY OPTIONS
-    require_once 'model/structures/interests_form_structure.php';
+    if($_SESSION['is_premium'])
+    {
+            //  FOR CHECKBOX DISPLAY OPTIONS
+        require_once 'model/structures/interests_form_structure.php';
 
-        //  GET ARRAY OF ALL CHOSEN INTERESTS
-        //  AS ITS DISPLAY VALUE
-    $options   = array_merge($indoorOptions, $outdoorOptions);
-    $interests = array_merge($indoorInterests, $outdoorInterests);
-    $displayedInterests = [];
+            //  GET ARRAY OF ALL CHOSEN INTERESTS
+            //  AS ITS DISPLAY VALUE
+        $options   = array_merge($indoorOptions, $outdoorOptions);
+        $interests = array_merge(
+                                    $memberData->getOutDoorInterests(), 
+                                    $memberData->getInDoorInterests()
+                                );
+        $displayedInterests = [];
 
-        //  GET DISPLAY FRIENDLY VERSION OF EACH
-    foreach($interests as $interest)
-        $displayedInterests[] = $options[$interest];
+            //  GET DISPLAY FRIENDLY VERSION OF EACH
+        foreach($interests as $interest)
+            $displayedInterests[] = $options[$interest];
 
-    $f3->set('interests', $displayedInterests);
+        $f3->set('interests', $displayedInterests);
+    }
 
     echo Template::instance()->render('views/profile_summary.html');
 });

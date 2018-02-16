@@ -24,8 +24,8 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Name:</label>
                         <span id="name" class="m-1">
-                            {{ exists($_SESSION['first_name']) ? $_SESSION['first_name'] : 'Unspecified' }}
-                            {{ exists($_SESSION['last_name']) ? $_SESSION['last_name'] : 'Unspecified' }}
+                            {{ exists(@memberData) ? @memberData->displayFName() : ''}}
+                            {{ exists(@memberData) ? @memberData->displayLName() : ''}}
                         </span>
                     </li>
 
@@ -33,7 +33,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Gender:</label>
                         <span id="gender" class="m-1">
-                                {{ exists($_SESSION['gender']) ? ucfirst($_SESSION['gender']) : 'Unspecified' }}
+                                {{ exists(@memberData) ? @memberData->displayGender() : '' }}
                         </span>
                     </li>
 
@@ -41,7 +41,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Age:</label>
                         <span id="age" class="m-1">
-                                {{ exists($_SESSION['age']) ? $_SESSION['age'] : 'Unspecified' }}
+                                {{ exists(@memberData) ? @memberData->displayAge() : '' }}
                         </span>
                     </li>
 
@@ -49,7 +49,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Phone:</label>
                         <span id="phone" class="m-1">
-                                {{ exists($_SESSION['phone_number']) ? $_SESSION['phone_number'] : 'Unspecified' }}
+                                {{ exists(@memberData) ? @memberData->displayPhone() : '' }}
                         </span>
                     </li>
 
@@ -57,7 +57,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Email:</label>
                         <span id="email" class="m-1">
-                                {{ exists($_SESSION['email']) ? $_SESSION['email'] : 'Unspecified' }}
+                                {{ exists(@memberData) ? @memberData->displayEmail() : '' }}
                         </span>
                     </li>
 
@@ -65,7 +65,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">State:</label>
                         <span id="state" class="m-1">
-                                {{ exists($_SESSION['state']) ? $_SESSION['state'] : 'Unspecified' }}
+                                {{ exists(@memberData) ? @memberData->displayState() : '' }}
                         </span>
                     </li>
 
@@ -73,7 +73,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Seeking:</label>
                         <span id="seeking" class="m-1">
-                                {{ exists($_SESSION['seeking_gender']) ? ucfirst($_SESSION['seeking_gender']) : 'Unspecified' }}
+                                {{ exists(@memberData) ? @memberData->displaySeeking() : '' }}
                         </span>
                     </li>
 
@@ -81,7 +81,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Interests:</label>
                         <span id="interests">
-                            {{ implode(@interests, ', ') }} 
+                            {{ isset(@interests) ? implode(@interests, ', ') : '' }} 
                         </span>
                     </li>
 
@@ -92,7 +92,7 @@
                 <img class="mb-3 dating-portait" src="./images/user.svg" alt="Default Profile Picture">
                 <h3 class="text-center">Biography</h3>
                 <p class="text-center">
-                    {{ exists($_SESSION['biography']) ? $_SESSION['biography'] : 'Unspecified' }}
+                    {{ exists(@memberData) ? @memberData->displayBio() : '' }}
                 </p>
             </div>
         </div>

@@ -19,5 +19,5 @@ class PremiumMember extends Member
     { $this->outDoorInterests = $outDoorInterests; }
 
     public function getOutDoorInterests()
-    { return $this->OutDoorInterests; }
+    { return $this->outDoorInterests; }
 }
