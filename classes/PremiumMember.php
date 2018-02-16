@@ -12,38 +12,38 @@
  */
 class PremiumMember extends Member
 {
-    private $inDoorInterests, $outDoorInterests;
+    private $_inDoorInterests, $_outDoorInterests;
 
     public function __construct($fname='', $lname='', $age='', $gender='', $phone='')
     {
         parent::__construct($fname, $lname, $age, $gender, $phone);
-        $this->inDoorInterests  = [];
-        $this->outDoorInterests = [];
+        $this->_inDoorInterests  = [];
+        $this->_outDoorInterests = [];
     }
 
     /**
      *  Sets the array of chosen indoor interests.
      * 
-     *  @param Array @inDoorInterests      The array of indoor interests
+     *  @param Array $_inDoorInterests      The array of indoor interests
      */
-    public function setInDoorInterests($inDoorInterests)
-    { $this->inDoorInterests = $inDoorInterests; }
+    public function _setInDoorInterests($_inDoorInterests)
+    { $this->_inDoorInterests = $_inDoorInterests; }
 
     /**
      *  Gets the array of chosen indoor interests.
      * 
      *  @return Array      The array of indoor interests
      */
-    public function getInDoorInterests()
-    { return $this->inDoorInterests; }
+    public function _getInDoorInterests()
+    { return $this->_inDoorInterests; }
 
     /**
      *  Sets the array of chosen outdoor interests.
      * 
-     *  @param Array @outDoorInterests      The array of outdoor interests
+     *  @param Array $_outDoorInterests      The array of outdoor interests
      */
-    public function setOutDoorInterests($outDoorInterests)
-    { $this->outDoorInterests = $outDoorInterests; }
+    public function setOutDoorInterests($_outDoorInterests)
+    { $this->_outDoorInterests = $_outDoorInterests; }
 
     /**
      *  Gets the array of chosen outdoor interests.
@@ -51,5 +51,5 @@ class PremiumMember extends Member
      *  @return Array      The array of outdoor interests
      */
     public function getOutDoorInterests()
-    { return $this->outDoorInterests; }
+    { return $this->_outDoorInterests; }
 }
