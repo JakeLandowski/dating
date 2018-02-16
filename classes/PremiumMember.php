@@ -26,7 +26,7 @@ class PremiumMember extends Member
      * 
      *  @param Array $inDoorInterests      The array of indoor interests
      */
-    public function _setInDoorInterests($inDoorInterests)
+    public function setInDoorInterests($inDoorInterests)
     { $this->_inDoorInterests = $inDoorInterests; }
 
     /**
@@ -34,7 +34,7 @@ class PremiumMember extends Member
      * 
      *  @return Array      The array of indoor interests
      */
-    public function _getInDoorInterests()
+    public function getInDoorInterests()
     { return $this->_inDoorInterests; }
 
     /**
