@@ -13,8 +13,7 @@
                        value="{{ $option }}" 
                        class="mt-2 form-check-input" 
                        {{ 
-                            isset(@memberData) && @is_premium && 
-                            in_array($option, @memberData->getInDoorInterests()) 
+                            @is_premium && in_array($option, @outdoorChosen) 
                             ? 'checked' : '' 
                         }} />
                 <label for="{{ $option }}" class="form-check-label">{{ $optionDisplay }}</label>
@@ -42,8 +41,7 @@
                        value="{{ $option }}" 
                        class="mt-2 form-check-input"
                        {{ 
-                            isset(@memberData) && @is_premium &&
-                            in_array($option, @memberData->getOutDoorInterests()) 
+                            @is_premium && in_array($option, @outdoorChosen) 
                             ? 'checked' : '' 
                         }} />
                 <label for="{{ $option }}" class="form-check-label">{{ $optionDisplay }}</label>

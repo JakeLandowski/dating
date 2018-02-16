@@ -80,7 +80,9 @@ $f3->route('GET|POST /@form', function($f3, $params)
         require_once 'model/structures/interests_form_structure.php';
         $f3->set('indoor_options',  $indoorOptions);
         $f3->set('outdoor_options', $outdoorOptions);
-        $f3->set('is_premium', $_SESSION['is_premium']);
+        $f3->set('outdoorChosen', $_SESSION['member_data']->getOutDoorInterests());
+        $f3->set('indoorChosen',  $_SESSION['member_data']->getInDoorInterests());
+        $f3->set('is_premium',    $_SESSION['is_premium']);
     }    
  
         //  STATE SELECT OPTIONS

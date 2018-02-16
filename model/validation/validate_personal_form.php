@@ -57,10 +57,8 @@ $isPremium = isset($_POST['premium_membership']);
     //  STORE USER STATE AND DATA 
 $_SESSION['is_premium']  = $isPremium;
 
-echo $isPremium;
-
-if(!exists($_SESSION['member_data']))
-    $_SESSION['member_data'] = $isPremium ? new PremiumMember() : new Member();
+// if(!exists($_SESSION['member_data']))
+$_SESSION['member_data'] = $isPremium ? new PremiumMember() : new Member();
 
 $memberData = $_SESSION['member_data'];
 
