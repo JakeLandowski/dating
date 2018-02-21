@@ -32,9 +32,10 @@ abstract class DataModel
             return $this->data[$key];
     }
 
-    public function getValueEncoded(&$key)
+    public function displayValue(&$key, $uc=false)
     {
-        return htmlspecialchars($this->getValue($key));
+        if($uc) return ucfirst(htmlspecialchars($this->getValue($key)));
+        else    return htmlspecialchars($this->getValue($key)); 
     }
 
     protected function connect()
