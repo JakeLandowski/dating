@@ -57,9 +57,6 @@ $isPremium = isset($_POST['premium_membership']);
     //  STORE USER STATE AND DATA 
 $_SESSION['is_premium']  = $isPremium;
 
-// if(!exists($_SESSION['member_data']))
-$_SESSION['member_data'] = $isPremium ? new PremiumMember() : new Member();
-
 $memberData = $_SESSION['member_data'];
 
 $firstName   = isset($_POST['first_name'])   ? $_POST['first_name']   : null;
@@ -67,26 +64,39 @@ $lastName    = isset($_POST['last_name'])    ? $_POST['last_name']    : null;
 $age         = isset($_POST['age'])          ? $_POST['age']          : null;  
 $phoneNumber = isset($_POST['phone_number']) ? $_POST['phone_number'] : null;
 
+$memberRows = [];
+
 if(!validName($firstName)) 
     $errors['first_name'] = 'Please enter a valid first name';
 else
-    $memberData->setFName($firstName);
+    $memberRows['fname'] = $firstName;
 
 if(!validName($lastName)) 
     $errors['last_name'] = 'Please enter a valid last name';
 else
-    $memberData->setLName($lastName);
+    $memberRows['lname'] = $firstName;
 
 if(!validAge($age)) 
     $errors['age'] = 'Please enter a valid age';
 else
-    $memberData->setAge($age);
+    $memberRows['age'] = $age;
 
 if(!validPhone($phoneNumber)) 
     $errors['phone_number'] = 'Please enter a valid phone number';
 else
-    $memberData->setPhone($phoneNumber);
+    $memberRows['phone'] = $phoneNumber;
 
     // NOT VALIDATED
 $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
-$memberData->setGender($gender);
+$memberRows['gender'] = $gender;
+
+
+if($isPremium)
+{
+    $memberRows['premium'] = 1;
+    $_SESSION['member_data'] = new PremiumMember($memberRows);
+}
+else
+{
+    $_SESSION['member_data'] = new Member($memberRows);
+} 
