@@ -10,7 +10,8 @@
                            name="email" 
                            type="text" 
                            class="form-control {{ isset(@errors['email']) ? 'error-border' : '' }}"
-                           value="{{ isset(@memberData) ? @memberData->getEmail() : '' }}" />
+                           value="{{ isset(@memberData) ? @memberData->displayValue('email') : '' }}" />
+                    
                     <check if="{{ isset(@errors['email']) }}">
                         <div class="error">{{ @errors['email'] }}</div>
                     </check>
@@ -24,7 +25,7 @@
                     <select name="state" id="state" class="custom-select">
                         <repeat group="{{ @states }}" value="@state">
                             <option value="{{ $state }}"
-                            {{ isset(@memberData) && @memberData->getState() === $state
+                            {{ isset(@memberData) && @memberData->getValue('state') === $state
                                ? 'selected' : ''}}
                             >{{ $state }}</option>
                         </repeat>
@@ -41,18 +42,18 @@
                         <input id="male" 
                                name="seeking_gender" 
                                type="radio" 
-                               value="male" 
+                               value="M" 
                                class="form-check-input"
-                               {{ isset(@memberData) && @memberData->getSeeking() === 'male' ? 'checked="checked"' : ''}} />
+                               {{ isset(@memberData) && @memberData->displayValue('seeking') === 'M' ? 'checked="checked"' : ''}} />
                         <label for="male" class="form-check-label">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input id="female" 
                                name="seeking_gender" 
                                type="radio" 
-                               value="female" 
+                               value="F" 
                                class="form-check-input"
-                               {{ isset(@memberData) && @memberData->getSeeking() === 'female' ? 'checked="checked"' : ''}} />
+                               {{ isset(@memberData) && @memberData->displayValue('seeking') === 'F' ? 'checked="checked"' : ''}} />
                         <label for="female" class="form-check-label">Female</label>
                     </div>
                 </div>
@@ -66,7 +67,7 @@
             <div class="form-group w-100">
                 <label for="biography" class="bold">Biography</label>
                 <textarea rows="8" class="form-control dating-soft-border" name="biography" id="biography"
-                >{{ isset(@memberData) ? @memberData->getBio() : '' }}</textarea>
+                >{{ isset(@memberData) ? @memberData->displayValue('bio', true) : '' }}</textarea>
             </div>
         </div>
     </div>

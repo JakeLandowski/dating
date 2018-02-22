@@ -16,7 +16,7 @@ class PremiumMember extends Member
     {
         $this->data['premium']   = '';
         $this->data['image']     = '';
-        $this->data['interests'] = []; 
+        $this->data['interests'] = ''; 
         parent::__construct($data);
     }
 }

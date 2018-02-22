@@ -12,7 +12,7 @@
                            name="first_name" 
                            type="text" 
                            class="form-control {{ isset(@errors['first_name']) ? 'error-border' : '' }}"
-                           value="{{ isset(@memberData) ? @memberData->getFName() : '' }}" />
+                           value="{{ isset(@memberData) ? @memberData->displayValue('fname') : '' }}" />
                     <check if="{{ isset(@errors['first_name']) }}">
                         <div class="error">{{ @errors['first_name'] }}</div>
                     </check>  
@@ -27,7 +27,7 @@
                            name="last_name" 
                            type="text" 
                            class="form-control {{ isset(@errors['last_name']) ? 'error-border' : '' }}"
-                           value="{{ isset(@memberData) ? @memberData->getLName() : '' }}" />
+                           value="{{ isset(@memberData) ? @memberData->displayValue('lname') : '' }}" />
                     <check if="{{ isset(@errors['last_name']) }}">
                         <div class="error">{{ @errors['last_name'] }}</div>
                     </check>  
@@ -42,7 +42,7 @@
                            name="age" 
                            type="text" 
                            class="form-control {{ isset(@errors['age']) ? 'error-border' : '' }}"
-                           value="{{ isset(@memberData) ? @memberData->getAge() : '' }}" />
+                           value="{{ isset(@memberData) ? @memberData->displayValue('age') : '' }}" />
                     <check if="{{ isset(@errors['age']) }}">
                         <div class="error">{{ @errors['age'] }}</div>
                     </check>
@@ -58,18 +58,18 @@
                         <input id="male" 
                                name="gender" 
                                type="radio" 
-                               value="male" 
+                               value="M" 
                                class="form-check-input" 
-                               {{ isset(@memberData) && @memberData->getGender() === 'male' ? 'checked="checked"' : ''}} />
+                               {{ isset(@memberData) && @memberData->getValue('gender') === 'M' ? 'checked="checked"' : ''}} />
                         <label for="male" class="form-check-label">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input id="female" 
                                name="gender" 
                                type="radio" 
-                               value="female" 
+                               value="F" 
                                class="form-check-input" 
-                               {{ isset(@memberData) && @memberData->getGender() === 'female' ? 'checked="checked"' : ''}} />
+                               {{ isset(@memberData) && @memberData->getValue('gender') === 'F' ? 'checked="checked"' : ''}} />
                         <label for="female" class="form-check-label">Female</label>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                            name="phone_number" 
                            type="text"
                            class="form-control {{ isset(@errors['phone_number']) ? 'error-border' : '' }}"
-                           value="{{ isset(@memberData) ? @memberData->getPhone() : '' }}" />
+                           value="{{ isset(@memberData) ? @memberData->displayValue('phone') : '' }}" />
                     <check if="{{ isset(@errors['phone_number']) }}">
                         <div class="error">{{ @errors['phone_number'] }}</div>
                     </check>
@@ -99,7 +99,7 @@
                             type="checkbox" 
                             value="yes" 
                             class="form-check-input" 
-                            {{ $_SESSION['is_premium'] ? 'checked="checked"' : ''}} />
+                            {{ isset(@memberData) && @memberData->getValue('premium') == 1 ? 'checked="checked"' : ''}} />
                     <label for="premium_membership" class="form-check-label">Sign me up for a Premium Account</label>
                 </div>
             </div>

@@ -80,8 +80,8 @@ $f3->route('GET|POST /@form', function($f3, $params)
         require_once 'model/structures/interests_form_structure.php';
         $f3->set('indoor_options',  $indoorOptions);
         $f3->set('outdoor_options', $outdoorOptions);
-        $f3->set('outdoorChosen', $_SESSION['member_data']->getOutDoorInterests());
-        $f3->set('indoorChosen',  $_SESSION['member_data']->getInDoorInterests());
+        $f3->set('outdoorChosen', $_SESSION['outdoor_chosen']);
+        $f3->set('indoorChosen',  $_SESSION['indoor_chosen']);
         $f3->set('is_premium',    $_SESSION['is_premium']);
     }    
  
@@ -123,27 +123,7 @@ $f3->route('GET /summary', function($f3)
 {
     $memberData = $_SESSION['member_data'];
     $f3->set('memberData', $memberData);
-
-    if($_SESSION['is_premium'])
-    {
-            //  FOR CHECKBOX DISPLAY OPTIONS
-        require_once 'model/structures/interests_form_structure.php';
-
-            //  GET ARRAY OF ALL CHOSEN INTERESTS
-            //  AS ITS DISPLAY VALUE
-        $options   = array_merge($indoorOptions, $outdoorOptions);
-        $interests = array_merge(
-                                    $memberData->getOutDoorInterests(), 
-                                    $memberData->getInDoorInterests()
-                                );
-        $displayedInterests = [];
-
-            //  GET DISPLAY FRIENDLY VERSION OF EACH
-        foreach($interests as $interest)
-            $displayedInterests[] = $options[$interest];
-
-        $f3->set('interests', $displayedInterests);
-    }
+    $f3->set('noData', 'N/A');
 
     echo Template::instance()->render('views/profile_summary.html');
 });

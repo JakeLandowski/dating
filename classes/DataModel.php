@@ -5,7 +5,7 @@
  *  @author Jacob Landowski
  */
 
-require_once "{$_SERVER['HOME']}/db_configs/dating_config.php";
+require_once getenv('HOME') . '/db_configs/dating_config.php';
 
  /**
  *  Desc...
@@ -21,22 +21,34 @@ abstract class DataModel
     {
         foreach($data as $key => $value)
         {
-            if(array_key_exists($key, $this->$data)) 
+            if(array_key_exists($key, $this->data)) 
                 $this->data[$key] = $value;
         }
     }
 
-    public function getValue(&$key)
+    public function setValue($key, $value)
+    {
+        if(array_key_exists($key, $this->data))
+        {
+            $this->data[$key] = $value;
+            return true;
+        }
+
+        return false;
+    }
+
+    public function getValue($key)
     {
         if(array_key_exists($key, $this->data))
             return $this->data[$key];
     }
 
-    public function displayValue(&$key, $uc=false)
+    public function displayValue($key, $uc=false)
     {
         if($uc) return ucfirst(htmlspecialchars($this->getValue($key)));
         else    return htmlspecialchars($this->getValue($key)); 
     }
+
 
     protected function connect()
     {

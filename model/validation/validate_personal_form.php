@@ -74,7 +74,7 @@ else
 if(!validName($lastName)) 
     $errors['last_name'] = 'Please enter a valid last name';
 else
-    $memberRows['lname'] = $firstName;
+    $memberRows['lname'] = $lastName;
 
 if(!validAge($age)) 
     $errors['age'] = 'Please enter a valid age';

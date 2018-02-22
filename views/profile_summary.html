@@ -24,8 +24,8 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Name:</label>
                         <span id="name" class="m-1">
-                            {{ exists(@memberData) ? @memberData->displayFName() : ''}}
-                            {{ exists(@memberData) ? @memberData->displayLName() : ''}}
+                            {{ exists(@memberData) ? @memberData->displayValue('fname', true) : @noData }}
+                            {{ exists(@memberData) ? @memberData->displayValue('lname', true) : @noData }}
                         </span>
                     </li>
 
@@ -33,7 +33,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Gender:</label>
                         <span id="gender" class="m-1">
-                                {{ exists(@memberData) ? @memberData->displayGender() : '' }}
+                                {{ exists(@memberData) ? @memberData->displayValue('gender', true) : @noData }}
                         </span>
                     </li>
 
@@ -41,7 +41,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Age:</label>
                         <span id="age" class="m-1">
-                                {{ exists(@memberData) ? @memberData->displayAge() : '' }}
+                                {{ exists(@memberData) ? @memberData->displayValue('age') : @noData }}
                         </span>
                     </li>
 
@@ -49,7 +49,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Phone:</label>
                         <span id="phone" class="m-1">
-                                {{ exists(@memberData) ? @memberData->displayPhone() : '' }}
+                                {{ exists(@memberData) ? @memberData->displayValue('phone') : @noData }}
                         </span>
                     </li>
 
@@ -57,7 +57,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Email:</label>
                         <span id="email" class="m-1">
-                                {{ exists(@memberData) ? @memberData->displayEmail() : '' }}
+                                {{ exists(@memberData) ? @memberData->displayValue('email') : @noData }}
                         </span>
                     </li>
 
@@ -65,7 +65,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">State:</label>
                         <span id="state" class="m-1">
-                                {{ exists(@memberData) ? @memberData->displayState() : '' }}
+                                {{ exists(@memberData) ? @memberData->displayValue('state', true) : @noData }}
                         </span>
                     </li>
 
@@ -73,7 +73,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Seeking:</label>
                         <span id="seeking" class="m-1">
-                                {{ exists(@memberData) ? @memberData->displaySeeking() : '' }}
+                                {{ exists(@memberData) ? @memberData->displayValue('seeking', true) : @noData }}
                         </span>
                     </li>
 
@@ -81,7 +81,7 @@
                     <li class="list-group-item row no-gutters p-2">
                         <label class="m-1 font-weight-bold">Interests:</label>
                         <span id="interests">
-                            {{ isset(@interests) ? implode(@interests, ', ') : '' }} 
+                            {{ exists(@memberData) ? @memberData->displayValue('interests') : @noData }} 
                         </span>
                     </li>
 
@@ -92,7 +92,7 @@
                 <img class="mb-3 dating-portait" src="./images/user.svg" alt="Default Profile Picture">
                 <h3 class="text-center">Biography</h3>
                 <p class="text-center">
-                    {{ exists(@memberData) ? @memberData->displayBio() : '' }}
+                    {{ exists(@memberData) ? @memberData->displayValue('bio', true) : @noData }}
                 </p>
             </div>
         </div>
