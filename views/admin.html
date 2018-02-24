@@ -8,49 +8,63 @@
     <include href="./views/includes/style_links.html" />
 </head>
 
-<body class="pb-md-5 px-md-5 pt-md-0">
+<body class="pb-md-5 px-md-4 pt-md-0">
 
 <!-- NAVBAR -->
     <include href="./views/includes/navbar.html" />
 
 <!-- MEMBER TABLE -->
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Age</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Email</th>
-                <th scope="col">State</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Seeking</th>
-                <th scope="col">Premium</th>
-                <th scope="col">Interests</th>
-            </tr>
-        </thead>
-        <tbody>
-            <repeat group="{{ @members }}" value="{{ @member }}">
+    <div class="table-container">
+
+        <nav aria-label="Page Navigation">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+
+                <loop from="{{ @i = 0 }}" to="{{ @i < @totalRows / 10 }}" step="@i++">
+                    <li class="page-item {{ $i == (@end / 10) - 1 ? 'active' : '' }}"><a class="page-link" href="#">1</a></li>
+                </loop>
+
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+
+        <table class="table">
+            <thead>
                 <tr>
-                    <td scope="row">{{ $member->displayValue('member_id') }}</td>
-                    <td scope="row">
-                        {{ $member->displayValue('fname', true) 
-                           . ' ' . 
-                           $member->displayValue('lname', true) }}
-                    </td>
-                    <td scope="row">{{ $member->displayValue('age')       }}</td>
-                    <td scope="row">{{ $member->displayValue('phone')     }}</td>
-                    <td scope="row">{{ $member->displayValue('email')     }}</td>
-                    <td scope="row">{{ $member->displayValue('state')     }}</td>
-                    <td scope="row">{{ $member->displayValue('gender')    }}</td>
-                    <td scope="row">{{ $member->displayValue('seeking')   }}</td>
-                    <td scope="row">{{ $member->displayValue('premium')   }}</td>
-                    <td scope="row">{{ $member->displayValue('interests') }}</td>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Seeking</th>
+                    <th scope="col">Premium</th>
+                    <th scope="col">Interests</th>
                 </tr>
-            </repeat>
-        </tbody>
-    </table>
-    
+            </thead>
+            <tbody>
+                <repeat group="{{ @members }}" value="{{ @member }}">
+                    <tr>
+                        <td scope="row">{{ $member->displayValue('member_id') }}</td>
+                        <td scope="row">
+                            {{ $member->displayValue('fname', true) 
+                            . ' ' . 
+                            $member->displayValue('lname', true) }}
+                        </td>
+                        <td scope="row">{{ $member->displayValue('age')       }}</td>
+                        <td scope="row">{{ $member->displayValue('phone')     }}</td>
+                        <td scope="row">{{ $member->displayValue('email')     }}</td>
+                        <td scope="row">{{ $member->displayValue('state')     }}</td>
+                        <td scope="row">{{ $member->displayValue('gender')    }}</td>
+                        <td scope="row">{{ $member->displayValue('seeking')   }}</td>
+                        <td scope="row">{{ $member->displayValue('premium')   }}</td>
+                        <td scope="row">{{ $member->displayValue('interests') }}</td>
+                    </tr>
+                </repeat>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
 

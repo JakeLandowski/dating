@@ -23,21 +23,30 @@ class Member extends DataModel
         'seeking'   => '',
         'bio'       => '',
         'premium'   => '',
-    ]; 
+    ];
+    
+    static protected $validColumns = 
+    [
+        'member_id', 'fname', 'lname',
+        'age', 'gender', 'phone',
+        'email', 'state', 'seeking',
+        'bio', 'premium', 'interests'
+    ];
 
     public static function getMembers($start, $amount, $order)
     {
         $connection = parent::connect();
 
-        $sql = 'SELECT SQL_CALC_FOUND_ROWS * FROM Member' . 
-               ' ORDER BY :order LIMIT :start, :amount';
-
+            //  If order given is a valid column use it
+        $sql = in_array($order, Member::$validColumns) ? 
+                "SELECT SQL_CALC_FOUND_ROWS * FROM Member 
+                 ORDER BY $order LIMIT :start, :amount" :
+                'SELECT SQL_CALC_FOUND_ROWS * FROM Member LIMIT :start, :amount';
         try
         {
             $statement = $connection->prepare($sql);
             $statement->bindValue(':start',  $start,  PDO::PARAM_INT);
             $statement->bindValue(':amount', $amount, PDO::PARAM_INT);
-            $statement->bindValue(':order',  $order,  PDO::PARAM_STR);
             $statement->execute();
 
             $rows = $statement->fetchAll(PDO::FETCH_ASSOC);

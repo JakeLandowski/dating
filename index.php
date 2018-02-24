@@ -78,11 +78,14 @@ $f3->route('GET|POST /@form', function($f3, $params)
 
             //  CONTAINS INTEREST OPTIONS ARRAY
         require_once 'model/structures/interests_form_structure.php';
-        $f3->set('indoor_options',  $indoorOptions);
-        $f3->set('outdoor_options', $outdoorOptions);
-        $f3->set('outdoorChosen', $_SESSION['outdoor_chosen']);
-        $f3->set('indoorChosen',  $_SESSION['indoor_chosen']);
-        $f3->set('is_premium',    $_SESSION['is_premium']);
+
+        $f3->mset([
+            'indoor_options'  => $indoorOptions,
+            'outdoor_options' => $outdoorOptions,
+            'outdoorChosen'   => $_SESSION['outdoor_chosen'],
+            'indoorChosen'    => $_SESSION['indoor_chosen'],
+            'is_premium'      => $_SESSION['is_premium']
+        ]);
     }    
  
         //  STATE SELECT OPTIONS
@@ -150,14 +153,11 @@ $f3->route('GET /admin/@start/@end/@order', function($f3, $params)
     $members   = $data[0];
     $totalRows = $data[1];
 
-    // echo '<pre>';
-    // print_r($members);
-    // echo '</pre>';
-
     $f3->mset([
         'title' => 'Admin Page',
         'members' => $members,
-        'totalRows' => $totalRows
+        'totalRows' => $totalRows,
+        'end' => (int)$params['end']
     ]);
 
     echo Template::instance()->render('views/admin.html');
