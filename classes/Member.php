@@ -45,7 +45,7 @@ class Member extends DataModel
 
             foreach($rows as $row)
             {
-                $members[] = $row['premium'] === 1 ?
+                $members[] = $row['premium'] == 1 ?
                     new PremiumMember($row) : new Member($row);
             }
 
@@ -80,7 +80,7 @@ class Member extends DataModel
 
             if(!$row) return null;
             
-            return $row['premium'] === 1 ?
+            return $row['premium'] == 1 ?
                 new PremiumMember($row) : new Member($row); 
         }
         catch(PDOException $err)
@@ -93,17 +93,17 @@ class Member extends DataModel
     public function registerMember()
     {
         $connection = parent::connect();
-        $sql = 'SELECT member_id FROM Member WHERE member_id = :member_id';
+        $sql = 'SELECT email FROM Member WHERE email = :email';
 
         try
         {
             $statement = $connection->prepare($sql);
-            $statement->bindValue(':member_id', $this->getValue('member_id'), PDO::PARAM_INT);
+            $statement->bindValue(':email', $this->getValue('email'), PDO::PARAM_INT);
             $statement->execute();
 
             $row = $statement->fetch(PDO::FETCH_ASSOC);
             
-            if(!$row) $this->insertMember($connection);
+            if(!$row) return $this->insertMember($connection);
         }
         catch(PDOException $err)
         {

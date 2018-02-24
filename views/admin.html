@@ -4,32 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ @formTitle }}</title>
-    <include href="views/includes/style_links.html" />
+    <title>{{ @title }}</title>
+    <include href="./views/includes/style_links.html" />
 </head>
 
 <body class="pb-md-5 px-md-5 pt-md-0">
 
 <!-- NAVBAR -->
-    <include href="views/includes/navbar.html" />
+    <include href="./views/includes/navbar.html" />
 
 <!-- MEMBER TABLE -->
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">blah</th>
-                <th scope="col">blah</th>
-                <th scope="col">blah</th>
-                <th scope="col">blah</th>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col">State</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Seeking</th>
+                <th scope="col">Premium</th>
+                <th scope="col">Interests</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
+            <repeat group="{{ @members }}" value="{{ @member }}">
+                <tr>
+                    <td scope="row">{{ $member->displayValue('member_id') }}</td>
+                    <td scope="row">
+                        {{ $member->displayValue('fname', true) 
+                           . ' ' . 
+                           $member->displayValue('lname', true) }}
+                    </td>
+                    <td scope="row">{{ $member->displayValue('age')       }}</td>
+                    <td scope="row">{{ $member->displayValue('phone')     }}</td>
+                    <td scope="row">{{ $member->displayValue('email')     }}</td>
+                    <td scope="row">{{ $member->displayValue('state')     }}</td>
+                    <td scope="row">{{ $member->displayValue('gender')    }}</td>
+                    <td scope="row">{{ $member->displayValue('seeking')   }}</td>
+                    <td scope="row">{{ $member->displayValue('premium')   }}</td>
+                    <td scope="row">{{ $member->displayValue('interests') }}</td>
+                </tr>
+            </repeat>
         </tbody>
     </table>
     

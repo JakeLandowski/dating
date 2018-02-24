@@ -5,7 +5,7 @@
  *  @author Jacob Landowski
  * 
  *  CREATE TABLE Member (
- *      member_id int(11)       NOT NULL,
+ *      member_id int(11)       NOT NULL AUTO_INCREMENT,
  *      fname     varchar(30)   NOT NULL DEFAULT '',
  *      lname     varchar(30)   NOT NULL DEFAULT '',
  *      age       tinyint(4)    NOT NULL DEFAULT '0',
@@ -63,10 +63,10 @@ abstract class DataModel
         return '';
     }
 
-    public function displayValue($key, $uc=false)
+    public function displayValue($key, $ucfirst=false, $emptyValue=true)
     {
-        if(empty($this->getValue($key))) return 'N/A';
-        else if($uc) return ucfirst(htmlspecialchars($this->getValue($key)));
+        if($emptyValue && empty($this->getValue($key))) return 'N/A';
+        else if($ucfirst) return ucfirst(htmlspecialchars($this->getValue($key)));
         else    return htmlspecialchars($this->getValue($key)); 
     }
 

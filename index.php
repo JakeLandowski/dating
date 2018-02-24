@@ -102,7 +102,8 @@ $f3->route('GET|POST /@form', function($f3, $params)
         if(empty($errors)) 
         { 
             if($route === 'interests' || ($route === 'profile' && !$isPremium))
-            $memberData->registerMember();
+                $_SESSION['memberAdded'] = $memberData->registerMember();
+
             $f3->reroute(FORMS[$route][$next]);
         }
 
@@ -124,29 +125,47 @@ $f3->route('GET|POST /@form', function($f3, $params)
 $f3->route('GET /summary', function($f3)
 {
     $memberData = $_SESSION['member_data'];
-    $f3->set('memberData', $memberData);
-    $f3->set('noData', 'N/A');
+
+    $f3->mset([
+        'memberData' => $memberData,
+        'noData' =>'N/A',
+        'memberAdded' => $_SESSION['memberAdded']
+    ]);
+
+    unset($_SESSION['memberAdded']);
 
     echo Template::instance()->render('views/profile_summary.html');
 });
 
 
-// ~~~~~~~~~~~ ADMIN ROUTE ~~~~~~~~~~~~ //
-$f3->route('GET /admin/@start/@end/@order', function($f3)
+// ~~~~~~~~~~~ ADMIN ROUTES ~~~~~~~~~~~~ //
+$f3->route('GET /admin/@start/@end/@order', function($f3, $params)
 {
     // $memberData = $_SESSION['member_data'];
     // $f3->set('memberData', $memberData);
 
-    $data = Member::getMembers(0, 10, 'member_id');
+    $data = Member::getMembers((int)$params['start'], 
+                               (int)$params['end'], 
+                                    $params['order']);
     $members   = $data[0];
     $totalRows = $data[1];
 
-    $f3->set('noData', 'N/A');
-    $f3->set('members', $members);
-    $f3->set('totalRow', $totalRow);
+    // echo '<pre>';
+    // print_r($members);
+    // echo '</pre>';
+
+    $f3->mset([
+        'title' => 'Admin Page',
+        'members' => $members,
+        'totalRows' => $totalRows
+    ]);
 
     echo Template::instance()->render('views/admin.html');
 });
 
+$f3->route('GET /admin', function($f3)
+{
+    $f3->reroute('/admin/0/10/id');
+});
 
 $f3->run();

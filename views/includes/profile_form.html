@@ -10,7 +10,7 @@
                            name="email" 
                            type="text" 
                            class="form-control {{ isset(@errors['email']) ? 'error-border' : '' }}"
-                           value="{{ isset(@memberData) ? @memberData->displayValue('email') : '' }}" />
+                           value="{{ isset(@memberData) ? @memberData->displayValue('email', false, false) : '' }}" />
                     
                     <check if="{{ isset(@errors['email']) }}">
                         <div class="error">{{ @errors['email'] }}</div>
@@ -67,7 +67,7 @@
             <div class="form-group w-100">
                 <label for="biography" class="bold">Biography</label>
                 <textarea rows="8" class="form-control dating-soft-border" name="biography" id="biography"
-                >{{ isset(@memberData) ? @memberData->displayValue('bio', true) : '' }}</textarea>
+                >{{ isset(@memberData) ? @memberData->displayValue('bio', true, false) : '' }}</textarea>
             </div>
         </div>
     </div>

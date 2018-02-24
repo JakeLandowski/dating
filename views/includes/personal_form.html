@@ -12,7 +12,7 @@
                            name="first_name" 
                            type="text" 
                            class="form-control {{ isset(@errors['first_name']) ? 'error-border' : '' }}"
-                           value="{{ isset(@memberData) ? @memberData->displayValue('fname') : '' }}" />
+                           value="{{ isset(@memberData) ? @memberData->displayValue('fname', false, false) : '' }}" />
                     <check if="{{ isset(@errors['first_name']) }}">
                         <div class="error">{{ @errors['first_name'] }}</div>
                     </check>  
@@ -27,7 +27,7 @@
                            name="last_name" 
                            type="text" 
                            class="form-control {{ isset(@errors['last_name']) ? 'error-border' : '' }}"
-                           value="{{ isset(@memberData) ? @memberData->displayValue('lname') : '' }}" />
+                           value="{{ isset(@memberData) ? @memberData->displayValue('lname', false, false) : '' }}" />
                     <check if="{{ isset(@errors['last_name']) }}">
                         <div class="error">{{ @errors['last_name'] }}</div>
                     </check>  
@@ -42,7 +42,7 @@
                            name="age" 
                            type="text" 
                            class="form-control {{ isset(@errors['age']) ? 'error-border' : '' }}"
-                           value="{{ isset(@memberData) ? @memberData->displayValue('age') : '' }}" />
+                           value="{{ isset(@memberData) ? @memberData->displayValue('age', false, false) : '' }}" />
                     <check if="{{ isset(@errors['age']) }}">
                         <div class="error">{{ @errors['age'] }}</div>
                     </check>
@@ -83,7 +83,7 @@
                            name="phone_number" 
                            type="text"
                            class="form-control {{ isset(@errors['phone_number']) ? 'error-border' : '' }}"
-                           value="{{ isset(@memberData) ? @memberData->displayValue('phone') : '' }}" />
+                           value="{{ isset(@memberData) ? @memberData->displayValue('phone', false, true) : '' }}" />
                     <check if="{{ isset(@errors['phone_number']) }}">
                         <div class="error">{{ @errors['phone_number'] }}</div>
                     </check>
