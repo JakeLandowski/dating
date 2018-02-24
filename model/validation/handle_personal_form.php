@@ -5,52 +5,8 @@
  *  @author Jacob Landowski
  */
 
-/**
- *  Validates a given name.
- * 
- *  @param String $name     The string being validated.
- *  @return boolean         True if name is valid
- */
-function validName($name)
-{
-    return !empty($name) && strlen($name) > 1 && ctype_alpha($name);
-}
+require_once 'functions.php';
 
-/**
- *  Validates a given age.
- * 
- *  @param int $age     The int being validated.
- *  @return boolean     True if age is valid
- */
-function validAge($age)
-{
-    return !empty($age) &&  is_numeric($age) && $age >= 18;
-}
-
-/**
- *  Will strip the phone number of all non digit 
- *  characters and then validate its length. This
- *  modifies the given phone number.
- * 
- *  @param int &$phone     Reference to the number being validated.
- *  @return boolean        True if phone number is valid
- */
-function validPhone(&$phone)
-{
-    $phone = preg_replace('/[^0-9]/', '', $phone);
-    $len = strlen($phone);
-    $isValid = !empty($phone) && $len === 10;
-
-    if($isValid)
-    {
-        $phone = substr_replace($phone, '(', 0, 0);
-        $phone = substr_replace($phone, ')', 4, 0);
-        $phone = substr_replace($phone, '-', 5, 0);
-        $phone = substr_replace($phone, '-', 9, 0);
-    }
-
-    return $isValid;  
-}
     //  CHECK PREMIUM STATE OF USER
 $isPremium = isset($_POST['premium_membership']);
 
@@ -89,7 +45,6 @@ else
     // NOT VALIDATED
 $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
 $memberRows['gender'] = $gender;
-
 
 if($isPremium)
 {

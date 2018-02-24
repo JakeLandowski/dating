@@ -3,6 +3,24 @@
  *  Desc...
  * 
  *  @author Jacob Landowski
+ * 
+ *  CREATE TABLE Member (
+ *      member_id int(11)       NOT NULL,
+ *      fname     varchar(30)   NOT NULL DEFAULT '',
+ *      lname     varchar(30)   NOT NULL DEFAULT '',
+ *      age       tinyint(4)    NOT NULL DEFAULT '0',
+ *      gender    enum('M','F') NOT NULL,
+ *      phone     char(14)      NOT NULL DEFAULT '',
+ *      email     varchar(20)   NOT NULL DEFAULT '',
+ *      state     char(2)       NOT NULL DEFAULT '',
+ *      seeking   enum('M','F') NOT NULL,
+ *      bio       text,
+ *      premium   tinyint(4)    NOT NULL DEFAULT '0',
+ *      image     varchar(50)   NOT NULL DEFAULT '',
+ *      interests varchar(100)  NOT NULL DEFAULT '',
+ *      PRIMARY KEY (member_id)
+ *  )     
+ *      ENGINE=InnoDB DEFAULT CHARSET=latin1;
  */
 
 require_once getenv('HOME') . '/db_configs/dating_config.php';
@@ -41,16 +59,19 @@ abstract class DataModel
     {
         if(array_key_exists($key, $this->data))
             return $this->data[$key];
+        
+        return '';
     }
 
     public function displayValue($key, $uc=false)
     {
-        if($uc) return ucfirst(htmlspecialchars($this->getValue($key)));
+        if(empty($this->getValue($key))) return 'N/A';
+        else if($uc) return ucfirst(htmlspecialchars($this->getValue($key)));
         else    return htmlspecialchars($this->getValue($key)); 
     }
 
 
-    protected function connect()
+    protected static function connect()
     {
         try
         {
@@ -66,7 +87,7 @@ abstract class DataModel
         return $connection;
     }
 
-    protected function disconnect(&$connection)
+    protected static function disconnect(&$connection)
     {
         unset($connection);
     }    

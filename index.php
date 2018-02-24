@@ -132,13 +132,13 @@ $f3->route('GET /summary', function($f3)
 
 
 // ~~~~~~~~~~~ ADMIN ROUTE ~~~~~~~~~~~~ //
-$f3->route('GET /admin', function($f3)
+$f3->route('GET /admin/@start/@end/@order', function($f3)
 {
     // $memberData = $_SESSION['member_data'];
     // $f3->set('memberData', $memberData);
 
-    $data = Member::getMembers();
-    $members = $data[0];
+    $data = Member::getMembers(0, 10, 'member_id');
+    $members   = $data[0];
     $totalRows = $data[1];
 
     $f3->set('noData', 'N/A');

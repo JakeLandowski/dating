@@ -5,16 +5,7 @@
  *  @author Jacob Landowski
  */
 
-/**
- *  Validates the email given, returns true if valid.
- * 
- *  @param String $email    The string being validated.
- *  @return boolean         True if email is valid
- */
-function validEmail($email)
-{
-    return !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL);
-}
+require_once 'functions.php';
 
 $memberData = $_SESSION['member_data'];
 
