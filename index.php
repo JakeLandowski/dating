@@ -96,11 +96,13 @@ $f3->route('GET|POST /@form', function($f3, $params)
     if(isPOST())
     { 
         $errors = [];
-        require_once "model/validation/validate_{$route}_form.php";
+        require_once "model/validation/handle_{$route}_form.php";
 
             //  IF NO ERRORS GO TO NEXT PAGE
         if(empty($errors)) 
         { 
+            if($route === 'interests' || ($route === 'profile' && !$isPremium))
+            $memberData->registerMember();
             $f3->reroute(FORMS[$route][$next]);
         }
 
@@ -126,6 +128,24 @@ $f3->route('GET /summary', function($f3)
     $f3->set('noData', 'N/A');
 
     echo Template::instance()->render('views/profile_summary.html');
+});
+
+
+// ~~~~~~~~~~~ ADMIN ROUTE ~~~~~~~~~~~~ //
+$f3->route('GET /admin', function($f3)
+{
+    // $memberData = $_SESSION['member_data'];
+    // $f3->set('memberData', $memberData);
+
+    $data = Member::getMembers();
+    $members = $data[0];
+    $totalRows = $data[1];
+
+    $f3->set('noData', 'N/A');
+    $f3->set('members', $members);
+    $f3->set('totalRow', $totalRow);
+
+    echo Template::instance()->render('views/admin.html');
 });
 
 
