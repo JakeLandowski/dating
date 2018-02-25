@@ -142,6 +142,11 @@ $f3->route('GET /summary', function($f3)
 
 
 // ~~~~~~~~~~~ ADMIN ROUTES ~~~~~~~~~~~~ //
+$f3->route('GET /admin', function($f3)
+{
+    $f3->reroute('/admin/1/10/lname');
+});
+
 $f3->route('GET /admin/@page/@per/@order', function($f3, $params)
 {
     $per   = !is_numeric($params['per']) || 
@@ -175,11 +180,6 @@ $f3->route('GET /admin/@page/@per/@order', function($f3, $params)
     ]);
 
     echo Template::instance()->render('views/admin.html');
-});
-
-$f3->route('GET /admin', function($f3)
-{
-    $f3->reroute('/admin/1/10/id');
 });
 
 // ~~~~~~~~~~~ LOGOUT ~~~~~~~~~~~~ //

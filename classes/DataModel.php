@@ -1,6 +1,8 @@
 <?php
 /**
- *  Desc...
+ *  Class for managing PDO connections to the Database
+ *  also for handling the whitelisted setting and retrieval 
+ *  of data from this class when inherited by other classes. 
  * 
  *  @author Jacob Landowski
  * 
@@ -11,7 +13,7 @@
  *      age       tinyint(4)    NOT NULL DEFAULT '0',
  *      gender    enum('M','F') NOT NULL,
  *      phone     char(14)      NOT NULL DEFAULT '',
- *      email     varchar(20)   NOT NULL DEFAULT '',
+ *      email     varchar(40)   NOT NULL DEFAULT '',
  *      state     char(2)       NOT NULL DEFAULT '',
  *      seeking   enum('M','F') NOT NULL,
  *      bio       text,
@@ -26,7 +28,9 @@
 require_once getenv('HOME') . '/db_configs/dating_config.php';
 
  /**
- *  Desc...
+ *  Class for managing PDO connections to the Database
+ *  also for handling the whitelisted setting and retrieval 
+ *  of data from this class when inherited by other classes.
  */
 abstract class DataModel
 {    
