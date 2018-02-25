@@ -16,17 +16,7 @@
 <!-- MEMBER TABLE -->
     <div class="table-container">
 
-        <nav aria-label="Page Navigation">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-
-                <loop from="{{ @i = 0 }}" to="{{ @i < @totalRows / 10 }}" step="@i++">
-                    <li class="page-item {{ $i == (@end / 10) - 1 ? 'active' : '' }}"><a class="page-link" href="#">1</a></li>
-                </loop>
-
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
+        <include href="./views/includes/pagination.html" />
 
         <table class="table">
             <thead>

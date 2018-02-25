@@ -63,7 +63,7 @@ class Member extends DataModel
 
             parent::disconnect($connection);
 
-            return [$members, $row['totalRows']];
+            return ['members' => $members, 'totalRows' =>$row['totalRows']];
         }
         catch(PDOException $err)
         {

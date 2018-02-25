@@ -142,22 +142,36 @@ $f3->route('GET /summary', function($f3)
 
 
 // ~~~~~~~~~~~ ADMIN ROUTES ~~~~~~~~~~~~ //
-$f3->route('GET /admin/@start/@end/@order', function($f3, $params)
+$f3->route('GET /admin/@page/@per/@order', function($f3, $params)
 {
-    // $memberData = $_SESSION['member_data'];
-    // $f3->set('memberData', $memberData);
+    $per   = !is_numeric($params['per']) || 
+             (int)$params['per'] <= 0 ? 10 : (int)$params['per'];
 
-    $data = Member::getMembers((int)$params['start'], 
-                               (int)$params['end'], 
-                                    $params['order']);
-    $members   = $data[0];
-    $totalRows = $data[1];
+    $page  = !is_numeric($params['page']) || 
+             (int)$params['page'] <= 0 ? 1  : (int)$params['page'];
+
+    $start =  0 + ($page - 1) * $per;
+
+    $order = htmlspecialchars($params['order']);
+
+    $data = Member::getMembers($start, $per, $order);
+
+    $totalRows = $data['totalRows'];
+
+    $numPages = (int)($totalRows / $per) + ($totalRows % $per != 0 ? 1 : 0);
+
+        //  If trying to nonexistant page of data
+    if($page > $numPages) $f3->error(404);
 
     $f3->mset([
-        'title' => 'Admin Page',
-        'members' => $members,
+        'title'     => 'Admin Page',
+        'members'   => $data['members'],
         'totalRows' => $totalRows,
-        'end' => (int)$params['end']
+        'start'     => $start,
+        'per'       => $per,
+        'page'      => $page,
+        'order'     => $order,
+        'numPages'  => $numPages
     ]);
 
     echo Template::instance()->render('views/admin.html');
@@ -165,7 +179,21 @@ $f3->route('GET /admin/@start/@end/@order', function($f3, $params)
 
 $f3->route('GET /admin', function($f3)
 {
-    $f3->reroute('/admin/0/10/id');
+    $f3->reroute('/admin/1/10/id');
 });
+
+// ~~~~~~~~~~~ LOGOUT ~~~~~~~~~~~~ //
+$f3->route('GET /logout', function($f3)
+{
+    if(isset($_COOKIE[session_name()])) 
+        setcookie(session_name(), '', time() - 3600, '/' );
+    
+    $_SESSION = array();
+    session_destroy();
+
+    $f3->reroute('/');
+});
+
+
 
 $f3->run();

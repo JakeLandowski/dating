@@ -1,4 +1,7 @@
 <div class="dating-navbar container-fluid mb-4 p-2 d-flex">
-    <a href='{{ @BASE }}/' class="btn text-muted">My Dating Website</a>
-    <a href="{{ @BASE }}/admin" class="btn btn-secondary ml-auto">Admin</a>
+    <a href='{{ @BASE }}/' class="btn text-muted mr-auto">My Dating Website</a>
+    <a href="{{ @BASE }}/admin" class="btn btn-secondary">Admin</a>
+    <a href="{{ @BASE }}/logout" class="btn btn-secondary ml-2 
+    {{ !exists($_SESSION['member_data']) ? 'd-none' : '' }}"
+    >Logout</a>
 </div>
