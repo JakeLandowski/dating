@@ -12,6 +12,7 @@ body
 li, p 
 {
     word-wrap: break-word;
+    word-break: break-word;
 }
 
 .dating-scroll-content
