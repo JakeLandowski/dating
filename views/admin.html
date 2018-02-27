@@ -21,16 +21,17 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                    <th scope="col">Name&nbsp;&nbsp;</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">State</th>
-                    <th scope="col">Gender</th>
-                    <th scope="col">Seeking</th>
-                    <th scope="col">Premium</th>
-                    <th scope="col">Interests</th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/member_id">ID</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/lname">First</a>&nbsp;&nbsp;</th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/fname">Last</a>&nbsp;&nbsp;</th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/age">Age</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/phone">Phone</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/email">Email</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/state">State</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/gender">Gender</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/seeking">Seeking</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/premium">Premium</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/interests">Interests</a></th>
                 </tr>
             </thead>
             <tbody>
@@ -42,11 +43,8 @@
                                 View
                             </a>
                         </td>
-                        <td scope="row">
-                            {{ @member->displayValue('fname', true) 
-                            . ' ' . 
-                            @member->displayValue('lname', true) }}
-                        </td>
+                        <td scope="row">{{ @member->displayValue('fname', true) }}</td>
+                        <td scope="row">{{ @member->displayValue('lname', true) }}</td>
                         <td scope="row">{{ @member->displayValue('age')     }}</td>
                         <td scope="row">{{ @member->displayValue('phone')   }}</td>
                         <td scope="row">{{ @member->displayValue('email')   }}</td>
