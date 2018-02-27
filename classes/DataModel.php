@@ -43,8 +43,7 @@ abstract class DataModel
     {
         foreach($data as $key => $value)
         {
-            if(array_key_exists($key, $this->data)) 
-                $this->data[$key] = $value;
+            setValue($key, $value);
         }
     }
 
@@ -52,8 +51,25 @@ abstract class DataModel
     {
         if(array_key_exists($key, $this->data))
         {
+            if($key == 'age')
+            {
+                if($value <= 0) $value = 18;
+                $value = (int) $value;
+            }
+            else if($key == 'fname' || $key == 'lname')
+            {
+                $value = substr($value, 0, 30);
+            }
+            else if($key == 'email')
+            {
+                $value = substr($value, 0, 40);
+            }
+            else if($key == 'bio')
+            {
+                $value = substr($value, 0, 255);
+            }
+
             $this->data[$key] = $value;
-            return true;
         }
 
         return false;
