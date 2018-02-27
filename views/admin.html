@@ -21,8 +21,8 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th scope="col">Name&nbsp;&nbsp;</th>
                     <th scope="col">Age</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Email</th>
@@ -36,7 +36,12 @@
             <tbody>
                 <repeat group="{{ @members }}" key="{{ @i }}" value="{{ @member }}">
                     <tr>
-                        <td scope="row">{{ @member->displayValue('member_id') }}</td>
+                        <td class="text-center" scope="row">
+                            {{ @member->displayValue('member_id') }}
+                            <a href="{{ @BASE }}/summary/{{ @member->displayValue('member_id') }}">
+                                View
+                            </a>
+                        </td>
                         <td scope="row">
                             {{ @member->displayValue('fname', true) 
                             . ' ' . 
