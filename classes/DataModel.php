@@ -43,7 +43,7 @@ abstract class DataModel
     {
         foreach($data as $key => $value)
         {
-            setValue($key, $value);
+            $this->setValue($key, $value);
         }
     }
 
