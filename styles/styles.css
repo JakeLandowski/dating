@@ -9,7 +9,7 @@ body
     overflow: auto;
 }
 
-li, p, td, th
+li, p, td
 {
     word-wrap: break-word;
     word-break: break-word;
