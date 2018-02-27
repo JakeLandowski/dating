@@ -140,6 +140,20 @@ $f3->route('GET /summary', function($f3)
     echo Template::instance()->render('views/profile_summary.html');
 });
 
+$f3->route('GET /summary/@member_id', function($f3, $params)
+{
+    $memberData = Member::getMember($params['member_id']);
+
+    if(!$memberData) $f3->error(404);
+
+    $f3->mset([
+        'memberData' => $memberData,
+        'noData' =>'N/A'
+    ]);
+
+    echo Template::instance()->render('views/profile_summary.html');
+});
+
 
 // ~~~~~~~~~~~ ADMIN ROUTES ~~~~~~~~~~~~ //
 $f3->route('GET /admin', function($f3)

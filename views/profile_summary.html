@@ -12,7 +12,7 @@
 <!-- NAVBAR -->
     <include href="views/includes/navbar.html" />
 
-<check if="{{ @memberAdded == true }}">
+<check if="{{ isset(@memberAdded) && @memberAdded == true }}">
     <true>
         <p class="bg-secondary text-center text-white">Successfully registered new member!</p>
     </true>
@@ -95,7 +95,7 @@
             </div>
 
             <div class="p-3 col-12 col-md-6">
-                <img class="mb-3 dating-portait" src="./images/user.svg" alt="Default Profile Picture">
+                <img class="mb-3 dating-portait" src="{{ @BASE }}/images/user.svg" alt="Default Profile Picture">
                 <h3 class="text-center">Biography</h3>
                 <p class="text-center">
                     {{ exists(@memberData) ? @memberData->displayValue('bio', true) : @noData }}
