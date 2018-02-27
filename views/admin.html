@@ -34,22 +34,30 @@
                 </tr>
             </thead>
             <tbody>
-                <repeat group="{{ @members }}" value="{{ @member }}">
+                <repeat group="{{ @members }}" key="{{ @i }}" value="{{ @member }}">
                     <tr>
-                        <td scope="row">{{ $member->displayValue('member_id') }}</td>
+                        <td scope="row">{{ @member->displayValue('member_id') }}</td>
                         <td scope="row">
-                            {{ $member->displayValue('fname', true) 
+                            {{ @member->displayValue('fname', true) 
                             . ' ' . 
-                            $member->displayValue('lname', true) }}
+                            @member->displayValue('lname', true) }}
                         </td>
-                        <td scope="row">{{ $member->displayValue('age')       }}</td>
-                        <td scope="row">{{ $member->displayValue('phone')     }}</td>
-                        <td scope="row">{{ $member->displayValue('email')     }}</td>
-                        <td scope="row">{{ $member->displayValue('state')     }}</td>
-                        <td scope="row">{{ $member->displayValue('gender')    }}</td>
-                        <td scope="row">{{ $member->displayValue('seeking')   }}</td>
-                        <td scope="row">{{ $member->displayValue('premium')   }}</td>
-                        <td scope="row">{{ $member->displayValue('interests') }}</td>
+                        <td scope="row">{{ @member->displayValue('age')     }}</td>
+                        <td scope="row">{{ @member->displayValue('phone')   }}</td>
+                        <td scope="row">{{ @member->displayValue('email')   }}</td>
+                        <td scope="row">{{ @member->displayValue('state')   }}</td>
+                        <td scope="row">{{ @member->displayValue('gender')  }}</td>
+                        <td scope="row">{{ @member->displayValue('seeking') }}</td>
+                        <td scope="row">
+                            <div class="custom-control custom-checkbox mr-4">
+                                <input  id="premium_{{ @i }}" 
+                                        class="custom-control-input" 
+                                        type="checkbox"
+                                        {{ @member->getValue('premium') == 1 ? 'checked="checked"' : '' }} />
+                                <label for="premium_{{ @i }}" class="custom-control-label"></label>
+                            </div>
+                        </td>
+                        <td scope="row">{{ @member->displayValue('interests') }}</td>
                     </tr>
                 </repeat>
             </tbody>
