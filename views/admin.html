@@ -17,21 +17,28 @@
     <div class="table-container">
 
         <include href="./views/includes/pagination.html" />
+        
+        <span class="px-2 py-2 pb-3 text-muted">Rows:</span>
+        <a class="btn btn-info py-1" href="{{ @BASE }}/admin/{{ @page }}/{{ 1 }}/{{ @order }}">1</a>
+        <a class="btn btn-info py-1" href="{{ @BASE }}/admin/{{ @page }}/{{ 5 }}/{{ @order }}">5</a>
+        <a class="btn btn-info py-1" href="{{ @BASE }}/admin/{{ @page }}/{{ 10 }}/{{ @order }}">10</a>
+        <a class="btn btn-info py-1" href="{{ @BASE }}/admin/{{ @page }}/{{ 25 }}/{{ @order }}">25</a>
+        <a class="btn btn-info py-1" href="{{ @BASE }}/admin/{{ @page }}/{{ 50 }}/{{ @order }}">50</a>
 
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/member_id">ID</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/lname">First</a>&nbsp;&nbsp;</th>
-                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/fname">Last</a>&nbsp;&nbsp;</th>
-                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/age">Age</a></th>
-                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/phone">Phone</a></th>
-                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/email">Email</a></th>
-                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/state">State</a></th>
-                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/gender">Gender</a></th>
-                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/seeking">Seeking</a></th>
-                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/premium">Premium</a></th>
-                    <th scope="col"><a href="{{ @BASE }}/admin/1/10/interests">Interests</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/{{ @page }}/{{ @per }}/member_id">ID</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/{{ @page }}/{{ @per }}/lname">First</a>&nbsp;&nbsp;</th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/{{ @page }}/{{ @per }}/fname">Last</a>&nbsp;&nbsp;</th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/{{ @page }}/{{ @per }}/age">Age</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/{{ @page }}/{{ @per }}/phone">Phone</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/{{ @page }}/{{ @per }}/email">Email</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/{{ @page }}/{{ @per }}/state">State</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/{{ @page }}/{{ @per }}/gender">Gender</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/{{ @page }}/{{ @per }}/seeking">Seeking</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/{{ @page }}/{{ @per }}/premium">Premium</a></th>
+                    <th scope="col"><a href="{{ @BASE }}/admin/{{ @page }}/{{ @per }}/interests">Interests</a></th>
                 </tr>
             </thead>
             <tbody>
