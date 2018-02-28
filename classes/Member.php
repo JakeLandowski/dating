@@ -33,6 +33,15 @@ class Member extends DataModel
         'bio', 'premium', 'interests'
     ];
 
+    /**
+     *  Retrieves an array of member objects populated from the Member
+     *  table in the database.
+     *  
+     *  @param $start  The index in the table to start at
+     *  @param $amount The amount of members to grab, starting from start index
+     *  @param $order  The column to order the result set by
+     *  @return Array  The array of initialized Members
+     */
     public static function getMembers($start, $amount, $order)
     {
         $connection = parent::connect();
@@ -72,6 +81,13 @@ class Member extends DataModel
         }
     }
 
+    /**
+     *  Retrieves a single Member object populated from the Member table
+     *  in the database.
+     *  
+     *  @param $id     The id of the member to return
+     *  @return Object The initialized Member object to return
+     */
     public static function getMember($id)
     {
         $connection = parent::connect();
@@ -99,6 +115,12 @@ class Member extends DataModel
         }
     }
 
+    /**
+     *  Registers the member by inserting them into the Member table
+     *  in the database
+     *
+     *  @return boolean True if the member was successfully inserted 
+     */
     public function registerMember()
     {
         $connection = parent::connect();

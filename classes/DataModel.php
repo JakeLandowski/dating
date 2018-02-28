@@ -37,7 +37,11 @@ abstract class DataModel
     protected $data = [];
 
     /**
-     *  Desc...
+     *  Initializes the object by adding all of the fields
+     *  in given data to internal data by checking the keys
+     *  and whitelisting them.
+     * 
+     *  @param $data The array of data to add to this object
      */
     public function __construct(&$data)
     {
@@ -47,6 +51,16 @@ abstract class DataModel
         }
     }
 
+    /** ~~ PART 4 VALIDATION REQUIREMENT ~~ 
+     *  Truncates fname, lfname, email and bio from the form
+     *  to ensure they're not too large. 
+     * 
+     *  Assigns the key and value to the internal data if the key exists
+     *  already.
+     *  
+     *  @param $key   The key to the data, usually the table column name
+     *  @param $value The value associated with the key
+     */
     public function setValue($key, $value)
     {
         if(array_key_exists($key, $this->data))
@@ -75,6 +89,12 @@ abstract class DataModel
         return false;
     }
 
+    /**
+     *  Retrieves the raw data stored internally from the key index.
+     *  
+     *  @param $key   The key to the data, usually the table column name
+     *  @return mixed The data to return from the internal data
+     */
     public function getValue($key)
     {
         if(array_key_exists($key, $this->data))
@@ -83,6 +103,17 @@ abstract class DataModel
         return '';
     }
 
+    /**
+     *  Retrieves the escaped data stored internally from the key index.
+     *  
+     *  @param $key        The key to the data, usually the table column name
+     *  @param $ucfirst    Optional boolean that determines if you want the 
+     *                     returned data to have the first character uppercased 
+     *                     for displaying, false by default
+     *  @param $emptyValue Optional boolean that determines if you want the string
+     *                     "N/A" to be returned if the data ended up being empty. 
+     *  @return mixed      The data to return from the internal data
+     */
     public function displayValue($key, $ucfirst=false, $emptyValue=true)
     {
         if($emptyValue && empty($this->getValue($key))) return 'N/A';
