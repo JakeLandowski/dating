@@ -46,7 +46,7 @@
             </thead>
             <tbody>
                 <repeat group="{{ @members }}" key="{{ @i }}" value="{{ @member }}">
-                    <tr>
+                    <tr class="{{ @i % 2 == 0 ? 'bg-light' : '' }}">
                         <td class="text-center" scope="row">
                             {{ @member->displayValue('member_id') }}
                             <br />
