@@ -47,22 +47,22 @@
             <tbody>
                 <repeat group="{{ @members }}" key="{{ @i }}" value="{{ @member }}">
                     <tr class="{{ @i % 2 == 0 ? 'bg-light' : '' }}">
-                        <td class="text-center" scope="row">
+                        <td class="text-center">
                             {{ @member->displayValue('member_id') }}
                             <br />
                             <a href="{{ @BASE }}/summary/{{ @member->displayValue('member_id') }}">
                                 View
                             </a>
                         </td>
-                        <td scope="row">{{ @member->displayValue('fname', true) }}</td>
-                        <td scope="row">{{ @member->displayValue('lname', true) }}</td>
-                        <td scope="row">{{ @member->displayValue('age')     }}</td>
-                        <td scope="row">{{ @member->displayValue('phone')   }}</td>
-                        <td scope="row">{{ @member->displayValue('email')   }}</td>
-                        <td scope="row">{{ @member->displayValue('state')   }}</td>
-                        <td scope="row">{{ @member->displayValue('gender')  }}</td>
-                        <td scope="row">{{ @member->displayValue('seeking') }}</td>
-                        <td scope="row">
+                        <td>{{ @member->displayValue('fname', true) }}</td>
+                        <td>{{ @member->displayValue('lname', true) }}</td>
+                        <td>{{ @member->displayValue('age')     }}</td>
+                        <td>{{ @member->displayValue('phone')   }}</td>
+                        <td>{{ @member->displayValue('email')   }}</td>
+                        <td>{{ @member->displayValue('state')   }}</td>
+                        <td>{{ @member->displayValue('gender')  }}</td>
+                        <td>{{ @member->displayValue('seeking') }}</td>
+                        <td>
                             <div class="custom-control custom-checkbox mr-4">
                                 <input  id="premium_{{ @i }}" 
                                         class="custom-control-input" 
@@ -71,7 +71,7 @@
                                 <label for="premium_{{ @i }}" class="custom-control-label"></label>
                             </div>
                         </td>
-                        <td scope="row">{{ @member->displayValue('interests') }}</td>
+                        <td>{{ @member->displayValue('interests') }}</td>
                     </tr>
                 </repeat>
             </tbody>
